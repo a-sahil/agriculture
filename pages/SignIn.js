@@ -3,10 +3,9 @@ import countries from "./countries";
 import { getUserAddress,
     register,
     verifyFarmer,
-    requestClaim,
-    claim,
-    getAllFarmers,
-    getRegistryContract
+    callRequestClaim,
+    callClaim,
+    getAllFarmers
   } from "../utils";
 
 const  SignIn = () => {

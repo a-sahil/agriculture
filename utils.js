@@ -69,7 +69,7 @@ export async function getComoditiesContract(providerOrSigner) {
 
 export async function register(_area, _state, _country ){
     const contract = await getRegistryContract(true);
-    const tx = await contract.register(_area, _state, _country );
+    const tx = await contract.farmerRegister(_area, _state, _country );
     await tx.wait();
     console.log("Farmer registered");
 }

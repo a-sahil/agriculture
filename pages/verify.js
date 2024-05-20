@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { getUserAddress,
   register,
   verifyFarmer,
-  requestClaim,
-  claim,
+  callRequestClaim,
+  callClaim,
   getAllFarmers
 } from "../utils";
  import SignIn from "./SignIn";
