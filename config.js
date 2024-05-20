@@ -1,6 +1,6 @@
 export const RPCKey = ``;
 
-export const BnbRegistry = `0x3023Eb390DdA0659c2aD42648C1CF4d42F5ebf0a`;
+export const BnbRegistry = `0x2E26ae1d2eD563Ad123D767b93bB567ad28898A0`;
 export const APIConsumer = `0x2d8482a14c25C53cd0606068cbAC795c69E9500c`;
 export const MyToken = `0x91E714f998B1AAe75b133E0467b5FAA2783f5D0A`;
 export const comoditiesContract = `0xf69DADe6e0EDbbd3b40e1Fd94EeBbE591F75567E`;
