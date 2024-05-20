@@ -8,11 +8,11 @@ import { useEffect, useState } from "react";
 import { getUserAddress,
   register,
   verifyFarmer,
-  requestClaim,
-  claim,
+  callRequestClaim,
+  callClaim,
   getAllFarmers
 } from "../utils";
-import { abiRegistry, addressRegistry } from "../config";
+import { comoditiesContract , addressRegistry } from "../config";
 
 
 export default function Frontpage() {
@@ -30,11 +30,11 @@ export default function Frontpage() {
       
     }
     async function requestClaimCall(){
-      const data = await requestClaim();
+      const data = await callRequestClaim();
     }
 
     async function claimCall(){
-      const data = await claim();
+      const data = await callClaim();
       await evefarmerClaimed();
       await eveFarmerFakeclaimed();
     }
@@ -137,6 +137,92 @@ export default function Frontpage() {
     console.log(
       "result:",
       `${farmeraddress} tried to fake Claim`
+    );
+  });
+}
+
+async function evePriceSet() {
+  const providerUrl =
+    "wss://quiet-quick-wind.bsc-testnet.quiknode.pro/7593d9a56a9bf68b6e049a867416791b5e1bfdbb/";
+
+  const eventABI = [
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "borrowerAddress",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "sellerAddress",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "price",
+          "type": "uint256"
+        }
+      ],
+      "name": "priceSet",
+      "type": "event"
+    },
+  ]
+
+  const provider = new WebSocketProvider(providerUrl);
+
+  const contract = new Contract(comoditiesContract, eventABI, provider);
+  contract.on("priceSet",(borrowerAddress, sellerAddress, price) => {
+    console.log(
+      "result:",
+      `${borrowerAddress} ${sellerAddress}  ${price} priceSet`
+    );
+  });
+}
+
+async function eveRequestAccepted() {
+  const providerUrl =
+    "wss://quiet-quick-wind.bsc-testnet.quiknode.pro/7593d9a56a9bf68b6e049a867416791b5e1bfdbb/";
+
+  const eventABI = [
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "borrowerAddress",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "sellerAddress",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "price",
+          "type": "uint256"
+        }
+      ],
+      "name": "requestAccepted",
+      "type": "event"
+    },
+  ]
+
+  const provider = new WebSocketProvider(providerUrl);
+
+  const contract = new Contract(comoditiesContract, eventABI, provider);
+  contract.on("requestAccepted",(borrowerAddress, sellerAddress, price) => {
+    console.log(
+      "result:",
+      `${borrowerAddress} ${sellerAddress}  ${price} requestAccepted`
     );
   });
 }
