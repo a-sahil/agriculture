@@ -3,8 +3,10 @@ import web3modal from "web3modal";
 import { ethers } from "ethers";
 import {
     addressRegistry,
+    comoditiesContract,
     abiRegistry,
     abiAPIConsumer,
+    abiComodities,
 } from "./config";
 // import axios from "axios";
 import { create } from "@web3-storage/w3up-client";
@@ -41,6 +43,28 @@ export async function getRegistryContract(providerOrSigner) {
     return contract;
 }
 
+export async function getComoditiesContract(providerOrSigner) {
+    // const modal = new web3modal();
+    // const connection = await modal.connect();
+    // const provider = new ethers.providers.Web3Provider(connection);
+    const provider = new ethers.BrowserProvider(window.ethereum);
+    const contract = new ethers.Contract(
+        comoditiesContract,
+        abiComodities,
+        provider
+    );
+    if (providerOrSigner == true) {
+        const signer = await provider.getSigner();
+        const contract = new ethers.Contract(
+            addressRegistry,
+            abiComodities,
+            signer
+        );
+        return contract;
+    }
+    return contract;
+}
+
 // register function
 
 export async function register(_area, _state, _country ){
@@ -58,7 +82,7 @@ export async function verifyFarmer(_farmerId){
     console.log("farmerAddress: " + _farmerId + "verified");
 }
 
-export async function requestClaim(){
+export async function callRequestClaim(){
     const contract = await getRegistryContract(true);
     const tx = await contract.requestClaim();
     await tx.wait();
@@ -67,7 +91,7 @@ export async function requestClaim(){
     return tx;
 }
 
-export async function claim(){
+export async function callClaim(){
     const contract = await getRegistryContract(true);
     const tx = await contract.claim();
     await tx.wait();
@@ -98,4 +122,145 @@ export async function getAllFarmers(){
 
     console.log("Dao's Fetched ", items);
     return items;
+}
+
+export async function fetchTotalFarmer() {
+    const contract = await getRegistryContract();
+    const address = await getUserAddress();
+    const data = await contract.farmerId();
+    console.log("dao id", data);
+    return data;
+}
+
+export async function buyerStake(amount){
+    const contract = await getRegistryContract(true);
+    const tx = await contract.buyerStake(amount);
+    await tx.wait();
+    console.log("buyer registered and staked");
+}
+
+export async function addCrop(cropName, price, quantity){
+    const contract = await getRegistryContract(true);
+    const tx = await contract.addCrop(cropName, price, quantity);
+    await tx.wait();
+    console.log("buyer registered and staked");
+}
+
+export async function getAllCrop(){
+    const contract = await getRegistryContract(true);
+    const data = await contract.getAllCrop();
+
+    const items = await Promise.all(
+        data.map(async (i) => {
+            let item = {
+
+                cropId: i.cropId.toString(),
+                farmerAddress: i.farmerAddress.toString(),
+                cropName: i.cropName.toString(),
+                quantity: i.quantity.toString(),
+                country: i.country.toString(),
+                price: i.price.toString()
+            };
+            return item;
+        })
+    );
+
+    console.log("crop's Fetched ", items);
+    return items;
+}
+
+export async function buyCrop(_cropId, _quantity){
+    const contract = await getRegistryContract(true);
+    const tx = await contract.buy(_cropId, _quantity);
+    await tx.wait();
+    console.log("buyer registered and staked");
+}
+
+//don't call
+export async function setMsp(cropName, _msp){
+    const contract = await getRegistryContract(true);
+    const tx = await contract.setmsp(cropName, _msp);
+    await tx.wait();
+    console.log("buyer registered and staked");
+}
+
+export async function withdrawStake(){
+    const contract = await getRegistryContract(true);
+    const tx = await contract.withdrawStake();
+    await tx.wait();
+    console.log("buyer registered and staked");
+}
+
+export async function fetchTotalCrop() {
+    const contract = await getRegistryContract();
+    const address = await getUserAddress();
+    const data = await contract.cropId();
+    console.log("dao id", data);
+    return data;
+}
+
+export async function cropToMsp(cropName) {
+    const contract = await getRegistryContract();
+    const address = await getUserAddress();
+    const data = await contract.cropToMSP(cropName);
+    console.log("dao id", data);
+    return data;
+}
+
+// ----------------------------------------------------------------
+
+
+export async function borrowRequest(_itemName, _timePeriod){
+    const contract = await getComoditiesContract(true);
+    const tx = await contract.borrowRequest(_itemName, _timePeriod);
+    await tx.wait();
+    console.log("buyer registered and staked");
+}
+
+export async function setPrice(_requestId, _price){
+    const contract = await getComoditiesContract(true);
+    const tx = await contract.setPrice(_requestId, _price);
+    await tx.wait();
+    console.log("buyer registered and staked");
+}
+
+
+export async function AcceptRequest(_value){
+    const contract = await getComoditiesContract(true);
+    const tx = await contract.AcceptRequest(_value);
+    await tx.wait();
+    console.log("buyer registered and staked");
+}
+
+
+export async function getAllRequest(){
+    const contract = await getComoditiesContract(true);
+    const data = await contract.getAllRequest();
+
+    const items = await Promise.all(
+        data.map(async (i) => {
+            let item = {
+
+                requestId: i.cropId.toString(),
+                borrowerAddress: i.borrowerAddress.toString(),
+                sellerAddress: i.sellerAddress.toString(),
+                _itemName: i._itemName.toString(),
+                _timePeriod: i._timePeriod.toString(),
+                price: i.price.toString(),
+                requestAccept: i.requestAccept.toString()
+            };
+            return item;
+        })
+    );
+
+    console.log("request's Fetched ", items);
+    return items;
+}
+
+export async function fetchTotalRequests() {
+    const contract = await getComoditiesContract();
+    const address = await getUserAddress();
+    const data = await contract.requestId();
+    console.log("dao id", data);
+    return data;
 }
