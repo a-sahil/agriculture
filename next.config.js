@@ -3,5 +3,12 @@ module.exports = {
     locales: ["en"],
     defaultLocale: "en",
   },
+  
+    "compilerOptions": {
+      "baseUrl": ".",
+      "paths": {
+        "@/*": ["src/*"]
+      }
+    },
   output: "standalone",
 };

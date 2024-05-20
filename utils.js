@@ -7,7 +7,7 @@ import {
     abiAPIConsumer,
 } from "./config";
 // import axios from "axios";
-import { create } from "@web3-storage/w3up-client";
+// import { create } from "@web3-storage/w3up-client";
 
 // Creating Instances
 

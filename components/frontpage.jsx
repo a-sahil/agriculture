@@ -17,9 +17,9 @@ import { abiRegistry, addressRegistry } from "../config";
 
 export default function Frontpage() {
 
-    async function getUserAddressCall(){
+    async function getUserAddressCall(){ 
         const data = await getUserAddress();
-    }
+    } 
     async function registerCall(){
       const data = await register("10000","mumbai", "maharastra");
     }
@@ -27,6 +27,7 @@ export default function Frontpage() {
     async function verifyFarmerCall(){
       const data = await verifyFarmer("2");
       await eveFarmerVerified();
+      
     }
     async function requestClaimCall(){
       const data = await requestClaim();
@@ -42,7 +43,7 @@ export default function Frontpage() {
       const data = await getAllFarmers();
   }
 
-    async function eveFarmerVerified() {
+  async function eveFarmerVerified() {
       const providerUrl =
         "wss://quiet-quick-wind.bsc-testnet.quiknode.pro/7593d9a56a9bf68b6e049a867416791b5e1bfdbb/";
   
@@ -109,7 +110,7 @@ export default function Frontpage() {
     });
 }
 
-async function eveFarmerFakeclaimed() {
+  async function eveFarmerFakeclaimed() {
   const providerUrl =
     "wss://quiet-quick-wind.bsc-testnet.quiknode.pro/7593d9a56a9bf68b6e049a867416791b5e1bfdbb/";
 

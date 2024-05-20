@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Container from "./container";
-import heroImg1 from "../public/img/hero1.png";
+import Footer from "./footer"
 
 const Hero = () => {
   return (
@@ -22,26 +22,20 @@ const Hero = () => {
                 href="https://web3templates.com/templates/nextly-landing-page-template-for-startups"
                 target="_blank"
                 rel="noopener"
-                className="px-8 py-4 text-lg font-medium text-center text-white bg-indigo-600 rounded-md ">
-                Connect
+                className="px-8 py-4 text-lg font-medium text-center text-white bg-indigo-600 hover:bg-indigo-800 ease-in-out duration-300 rounded-md ">
+                Connect Wallet
               </a>
             </div>
           </div>
         </div>
-        <div className="flex items-center justify-center w-full lg:w-1/2">
-          <div className="">
-            <Image
-              src={heroImg1}
-              width="616"
-              height="617"
-              className={"object-cover"}
-              alt="Hero Illustration"
-              loading="eager"
-              placeholder="blur"
-            />
-          </div>
-        </div>
+        <div className="flex flex-1 flex-col items-center justify-center relative top-12">
+        <div
+          className="h-[105%] w-[90%] rounded-t-full rounded-bl-full rounded-br-[145rem] bg-primary
+        bg-[url('https://images.unsplash.com/photo-1536147210925-5cb7a7a4f9fe?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Z3JlZW4lMjBwbGFudHxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80')]"
+        ></div>
+      </div>
       </Container>
+      <Footer />
     </>
   
   );

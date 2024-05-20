@@ -1,8 +1,9 @@
 import Link from "next/link";
-import ThemeChanger from "./DarkSwitch";
+//import ThemeChanger from "./DarkSwitch";
 import Image from "next/image"
 import { Disclosure } from "@headlessui/react";
-
+import { ConnectButton } from "@rainbow-me/rainbowkit";
+ 
 const Navbar = () => {
   const navigation = [
     "Register",
@@ -57,7 +58,7 @@ const Navbar = () => {
 
         {/* menu  */}
         <div className="hidden text-center lg:flex lg:items-center">
-          <ul className="items-center justify-end flex-1 pt-6 list-none lg:pt-0 lg:flex">
+          <ul className="items-center justify-end flex-1 pt-6 relative left-[32rem] list-none lg:pt-0 lg:flex">
             {navigation.map((menu, index) => (
               <li className="mr-3 nav__item" key={index}>
                 <Link href="/SignIn" className="inline-block px-4 py-2 text-lg font-normal text-gray-800 no-underline rounded-md dark:text-gray-200 hover:text-indigo-500 focus:text-indigo-500 focus:bg-indigo-100 focus:outline-none dark:focus:bg-gray-800">
@@ -68,12 +69,10 @@ const Navbar = () => {
           </ul>
         </div>
 
-        <div className="hidden mr-3 space-x-4 lg:flex nav__item">
-          <Link href="/" className="px-6 py-2 text-white bg-indigo-600 rounded-md md:ml-5">
-              Get Started
-          </Link>
+        <div className="hidden mr-3 space-x-4 lg:flex nav__item relative right-6">
+          <ConnectButton chainStatus="icon" accountStatus="avatar" className="px-6 py-2 text-white bg-indigo-600 hover:bg-indigo-800 ease-in-out duration-300 rounded-md  md:ml-5"  />
 
-          <ThemeChanger />
+          {/* <ThemeChanger /> */}
         </div>
       </nav>
     </div>

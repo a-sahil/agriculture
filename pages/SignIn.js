@@ -1,11 +1,19 @@
 import React, { useState } from 'react';
 import countries from "./countries";
+import { getUserAddress,
+    register,
+    verifyFarmer,
+    requestClaim,
+    claim,
+    getAllFarmers,
+    getRegistryContract
+  } from "../utils";
 
-const SignIn = () => {
+const  SignIn = () => {
     const [details, setDetails] = useState({
-        area: "",
-        state: "",
-        country: "",
+        _area: "",
+        _state: "",
+        _country: "",
     });
 
     const handleChange = (e) => {
@@ -15,22 +23,31 @@ const SignIn = () => {
         });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
+        try {
+            await register(details._area, details._state, details._country);
+            console.log("Farmer is registered");
+             //getUserAddress();
+             getAllFarmers()
+
+        } catch (error) {
+            console.error("Error registering farmer:", error);
+        }
         console.log(details);
     };
 
     return (
         <div className="flex justify-center relative top-20">
-            <form className='p-12 bg-white rounded-lg ' onSubmit={handleSubmit}>
+            <form className='p-12 bg-white rounded-lg shadow-black shadow-2xl' onSubmit={handleSubmit}>
                 <h1 className="text-5xl mb-6 text-black">Registration</h1>
                 <label htmlFor="area" className='text-black'>Area:</label><br />
                 <input
                     type="text"
-                    id="area"
-                    name="area"
-                    value={details.area}
-                    onChange={handleChange}
+                    id="_area"
+                    name="_area"
+                    value={details._area}
+                     onChange={handleChange}
                     placeholder="hectares"
                     className="px-14 py-2 border border-gray-300 bg-white text-black rounded"
                 /><br /><br />
@@ -38,20 +55,22 @@ const SignIn = () => {
                 <label htmlFor="state" className='text-black'>State:</label><br />
                 <input
                     type="text"
-                    id="state"
-                    name="state"
-                    value={details.state}
-                    onChange={handleChange}
+                    id="_state"
+                    name="_state"
+                    placeholder="Enter your State"
+                    value={details._state}
+                     onChange={handleChange}
                     className="px-14 py-2 border border-gray-300  bg-white text-black rounded"
                 /><br /><br />
 
                 <label className='text-black'>
                     Country:
                     <select
-                        name="country"
-                        value={details.country}
-                        onChange={handleChange}
+                        name="_country"
+                        value={details._country}
+                         onChange={handleChange}
                         className=" px-14 py-2 flex border border-gray-300 bg-white rounded"
+                        placeholder="Select Your Country"
                         required
                     >
                         <option key="" value=""></option>
@@ -67,5 +86,5 @@ const SignIn = () => {
     );
 };
 
-export default SignIn;
+export default  SignIn;
 
