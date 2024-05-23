@@ -169,17 +169,24 @@ export async function getAllCrop(){
     return items;
 }
 
-export async function buyCrop(_cropId, _quantity){
+export async function sell(_cropId){
     const contract = await getRegistryContract(true);
-    const tx = await contract.buy(_cropId, _quantity);
+    const tx = await contract.sell(_cropId);
     await tx.wait();
     console.log("buyer registered and staked");
 }
 
-//don't call
+export async function cropRecieved(_cropId, _value){
+    const contract = await getRegistryContract(true);
+    const tx = await contract.cropRecieved(_cropId, _value);
+    await tx.wait();
+    console.log("buyer registered and staked");
+}
+
+
 export async function setMsp(cropName, _msp){
     const contract = await getRegistryContract(true);
-    const tx = await contract.setmsp(cropName, _msp);
+    const tx = await contract.setMsp(cropName, _msp);
     await tx.wait();
     console.log("buyer registered and staked");
 }

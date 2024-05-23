@@ -251,24 +251,6 @@ export const abiRegistry =`[
 	{
 		"inputs": [
 			{
-				"internalType": "uint256",
-				"name": "_cropId",
-				"type": "uint256"
-			},
-			{
-				"internalType": "uint256",
-				"name": "_quantity",
-				"type": "uint256"
-			}
-		],
-		"name": "buy",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
 				"internalType": "address",
 				"name": "",
 				"type": "address"
@@ -347,6 +329,24 @@ export const abiRegistry =`[
 	{
 		"inputs": [
 			{
+				"internalType": "uint256",
+				"name": "_cropId",
+				"type": "uint256"
+			},
+			{
+				"internalType": "bool",
+				"name": "_value",
+				"type": "bool"
+			}
+		],
+		"name": "cropRecieved",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
 				"internalType": "string",
 				"name": "",
 				"type": "string"
@@ -412,7 +412,12 @@ export const abiRegistry =`[
 					},
 					{
 						"internalType": "address",
-						"name": "farmerAddress",
+						"name": "buyerAddress",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "sellerAddress",
 						"type": "address"
 					},
 					{
@@ -500,19 +505,6 @@ export const abiRegistry =`[
 		"type": "function"
 	},
 	{
-		"inputs": [],
-		"name": "getBuyerBalance",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
 		"inputs": [
 			{
 				"internalType": "uint256",
@@ -529,7 +521,12 @@ export const abiRegistry =`[
 			},
 			{
 				"internalType": "address",
-				"name": "farmerAddress",
+				"name": "buyerAddress",
+				"type": "address"
+			},
+			{
+				"internalType": "address",
+				"name": "sellerAddress",
 				"type": "address"
 			},
 			{
@@ -586,6 +583,19 @@ export const abiRegistry =`[
 	{
 		"inputs": [
 			{
+				"internalType": "uint256",
+				"name": "_cropId",
+				"type": "uint256"
+			}
+		],
+		"name": "sell",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
 				"internalType": "string",
 				"name": "cropName",
 				"type": "string"
@@ -596,7 +606,7 @@ export const abiRegistry =`[
 				"type": "uint256"
 			}
 		],
-		"name": "setmsp",
+		"name": "setMsp",
 		"outputs": [],
 		"stateMutability": "nonpayable",
 		"type": "function"
