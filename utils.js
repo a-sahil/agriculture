@@ -56,7 +56,7 @@ export async function getComoditiesContract(providerOrSigner) {
     if (providerOrSigner == true) {
         const signer = await provider.getSigner();
         const contract = new ethers.Contract(
-            addressRegistry,
+            comoditiesContract,
             abiComodities,
             signer
         );
@@ -69,7 +69,7 @@ export async function getComoditiesContract(providerOrSigner) {
 
 export async function register(_area, _state, _country ){
     const contract = await getRegistryContract(true);
-    const tx = await contract.register(_area, _state, _country );
+    const tx = await contract.farmerRegister(_area, _state, _country );
     await tx.wait();
     console.log("Farmer registered");
 }
@@ -84,7 +84,7 @@ export async function verifyFarmer(_farmerId){
 
 export async function callRequestClaim(){
     const contract = await getRegistryContract(true);
-    const tx = await contract.requestClaim();
+    const tx = await contract.callRequestClaim();
     await tx.wait();
     console.log("farmer requested for claim");
     console.log(tx);
@@ -93,7 +93,7 @@ export async function callRequestClaim(){
 
 export async function callClaim(){
     const contract = await getRegistryContract(true);
-    const tx = await contract.claim();
+    const tx = await contract.callClaim();
     await tx.wait();
     console.log("farmer claim verified");
 }
@@ -169,17 +169,24 @@ export async function getAllCrop(){
     return items;
 }
 
-export async function buyCrop(_cropId, _quantity){
+export async function sell(_cropId){
     const contract = await getRegistryContract(true);
-    const tx = await contract.buy(_cropId, _quantity);
+    const tx = await contract.sell(_cropId);
     await tx.wait();
     console.log("buyer registered and staked");
 }
 
-//don't call
+export async function cropRecieved(_cropId, _value){
+    const contract = await getRegistryContract(true);
+    const tx = await contract.cropRecieved(_cropId, _value);
+    await tx.wait();
+    console.log("buyer registered and staked");
+}
+
+
 export async function setMsp(cropName, _msp){
     const contract = await getRegistryContract(true);
-    const tx = await contract.setmsp(cropName, _msp);
+    const tx = await contract.setMsp(cropName, _msp);
     await tx.wait();
     console.log("buyer registered and staked");
 }
@@ -241,7 +248,7 @@ export async function getAllRequest(){
         data.map(async (i) => {
             let item = {
 
-                requestId: i.cropId.toString(),
+                requestId: i.requestId.toString(),
                 borrowerAddress: i.borrowerAddress.toString(),
                 sellerAddress: i.sellerAddress.toString(),
                 _itemName: i._itemName.toString(),
