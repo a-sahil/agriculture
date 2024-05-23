@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { borrowRequest } from '../utils';
-
+import AllBorrowReq from "../components/allborrowreq";
 const Borrow = () => {
   const [details, setDetails] = useState({
     _itemName: "",
@@ -63,6 +63,10 @@ const Borrow = () => {
 
         <button type="submit" className="px-10 py-2 mt-4 text-lg font-medium text-center text-white bg-[#448aff] hover:bg-[#0d47a1] transition duration-150 ease-out hover:ease-in rounded-md shadow-lg">Submit</button>
       </form>
+
+      <div className="absolute  top-[25rem] left-40">
+        {AllBorrowReq()}
+      </div>
     </div>
   );
 }

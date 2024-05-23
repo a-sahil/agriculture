@@ -37,9 +37,12 @@ const  SignIn = () => {
     };
 
     return (
-        
-        <div className="flex justify-center relative top-20">
-            <form className='p-12 bg-white rounded-lg shadow-black shadow-2xl' onSubmit={handleSubmit}>
+        <div>
+        <div>
+            <img src="/images/illustrations/contact-bg.jpg" alt ="" className="w-full h-screen" />
+        </div>
+        <div className="flex  absolute top-20 left-40 ">
+            <form className='p-20 bg-white rounded-lg shadow-black shadow-2xl' onSubmit={handleSubmit}>
                 <h1 className="text-5xl mb-6 text-black">Registration</h1>
                 <label htmlFor="area" className='text-black'>Area:</label><br />
                 <input
@@ -83,6 +86,8 @@ const  SignIn = () => {
                 <button type="submit" className="px-10 py-2 mt-4 text-lg font-medium text-center text-white bg-[#448aff] hover:bg-[#0d47a1] transition duration-150 ease-out hover:ease-in rounded-md">Submit</button>
             </form>
         </div>
+        </div>
+
     );
 };
 
