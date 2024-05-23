@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { getUserAddress,
-  register,
   verifyFarmer,
-  callRequestClaim,
-  callClaim,
   getAllFarmers
 } from "../utils";
  import SignIn from "./SignIn";
@@ -18,6 +15,7 @@ const Page = () => {
   useEffect(() => {
     setIsUserSignIn(true);
   }, []);
+ 
 
   useEffect(() => {
     const fetchData = async () => {
@@ -30,28 +28,59 @@ const Page = () => {
             setArea(area);
             setState(state);
             setFarmersData(farmersData);
+            const farmersWithVerificationStatus = farmersData.map(farmersData => ({
+              ...farmersData,
+              verified: farmersData.isVerified, 
+            }));
+            setFarmersData(farmersWithVerificationStatus);
           }
-          console.log(area);
-          console.log(state);
-        
       }
     };
   
     fetchData();
   }, [isUserSignIn]);
-  
- 
 
-  return (
+
+  const handleVerify = async (farmerId) => {
+    try {
+      await verifyFarmer(farmerId);
+      setFarmersData(prevFarmersData =>
+        prevFarmersData.map(farmersData =>
+          farmersData.farmerId === farmerId ? { ...farmersData, verified: true } : farmersData
+        )
+      );
+      console.log("farmer verified");
+    } catch (error) {
+      setError("You do not have the necessary permissions to verify this farmer.");
+      console.error('Verification error:', error);
+    }
+  };
+
+ return (
+  
+  <div>
+    <div>
+      <img 
+      src="/images/illustrations/farmland.png"
+      alt=""
+      className="w-screen "
+      />
+    </div>
 <div className="absolute top-24 left-10">
       <div className="space-y-4">
         {farmersData.length > 0 ? (
           farmersData.map(farmersData => (
-            <div key={farmersData.farmerId} className="flex space-x-12  border-2 border-blue-600 py-4 m-2 text-lg ">
+            <div key={farmersData.farmerId} className="flex space-x-12  text-white py-4 m-2 text-lg ">
               {farmersData.farmerAddress && <div className="ml-6">User Address: {farmersData.farmerAddress}</div>}
               {farmersData.area && <div>Area: {farmersData.area}</div>}
               {farmersData.state && <div>State: {farmersData.state}</div>}
-              <button className='relative left-80 bg-indigo-600 px-16 py-4 rounded-md hover:bg-indigo-800 ease-in-out duration-500 text-white opacity-80' onClick={verifyFarmer()}>Verify</button>
+              <button
+                className={`relative left-80 px-16 py-4 rounded-md  ease-in-out duration-500 text-white opacity-80 ${farmersData.verified ? 'bg-blue-800 cursor-not-allowed' : 'bg-indigo-600'}`}
+                onClick={() => handleVerify(farmersData.farmerId)}
+                disabled={farmersData.verified}
+              >
+                {farmersData.verified ? 'Verified' : 'Verify'}
+              </button>
             </div>
             
           ))
@@ -61,6 +90,9 @@ const Page = () => {
 
       </div>
     </div>
+  </div>
+
+
   );
 }
 

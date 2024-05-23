@@ -56,7 +56,7 @@ export async function getComoditiesContract(providerOrSigner) {
     if (providerOrSigner == true) {
         const signer = await provider.getSigner();
         const contract = new ethers.Contract(
-            addressRegistry,
+            comoditiesContract,
             abiComodities,
             signer
         );
@@ -79,12 +79,12 @@ export async function verifyFarmer(_farmerId){
     const contract = await getRegistryContract(true);
     const tx = await contract.verifyFarmer(_farmerId);
     await tx.wait();
-    console.log("farmerAddress: " + _farmerId + "verified");
+    console.log("farmerAddress: " + _farmerId + " verified");
 }
 
 export async function callRequestClaim(){
     const contract = await getRegistryContract(true);
-    const tx = await contract.requestClaim();
+    const tx = await contract.callRequestClaim();
     await tx.wait();
     console.log("farmer requested for claim");
     console.log(tx);
@@ -93,7 +93,7 @@ export async function callRequestClaim(){
 
 export async function callClaim(){
     const contract = await getRegistryContract(true);
-    const tx = await contract.claim();
+    const tx = await contract.callClaim();
     await tx.wait();
     console.log("farmer claim verified");
 }
@@ -158,7 +158,7 @@ export async function getAllCrop(){
                 farmerAddress: i.farmerAddress.toString(),
                 cropName: i.cropName.toString(),
                 quantity: i.quantity.toString(),
-                country: i.country.toString(),
+                // country: i.country.toString(),
                 price: i.price.toString()
             };
             return item;
@@ -241,7 +241,7 @@ export async function getAllRequest(){
         data.map(async (i) => {
             let item = {
 
-                requestId: i.cropId.toString(),
+                requestId: i.requestId.toString(),
                 borrowerAddress: i.borrowerAddress.toString(),
                 sellerAddress: i.sellerAddress.toString(),
                 _itemName: i._itemName.toString(),

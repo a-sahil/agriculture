@@ -37,6 +37,7 @@ const  SignIn = () => {
     };
 
     return (
+        
         <div className="flex justify-center relative top-20">
             <form className='p-12 bg-white rounded-lg shadow-black shadow-2xl' onSubmit={handleSubmit}>
                 <h1 className="text-5xl mb-6 text-black">Registration</h1>
