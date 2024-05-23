@@ -232,12 +232,12 @@ export async function setPrice(_requestId, _price){
 }
 
 
-export async function AcceptRequest(_value){
-    const contract = await getComoditiesContract(true);
-    const tx = await contract.AcceptRequest(_value);
-    await tx.wait();
-    console.log("buyer registered and staked");
-}
+// export async function AcceptRequest(_value){
+//     const contract = await getComoditiesContract(true);
+//     const tx = await contract.AcceptRequest(_value);
+//     await tx.wait();
+//     console.log("buyer registered and staked");
+// }
 
 
 export async function getAllRequest(){
