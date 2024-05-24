@@ -1,17 +1,18 @@
 import Link from "next/link";
-//import ThemeChanger from "./DarkSwitch";
-import Image from "next/image"
 import { Disclosure } from "@headlessui/react";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
- 
+
 const Navbar = () => {
   const navigation = [
-    "Register",
-    "Claim",
+    { label: 'Home', path: '/' },
+    { label: 'Register', path: '/SignIn' },
+    { label: 'Dashboard', path: '/dashboard' },
+    { label: 'Claim', path: '/claim' },
+    { label: 'Stake', path: '/staker' },
   ];
 
   return (
-    <div className="w-full">
+    <div className="w-full absolute top-0 left-0 right-0">
       <nav className="container relative flex flex-wrap items-center justify-between p-8 mx-auto lg:justify-between xl:px-0">
         {/* Logo  */}
         <Disclosure>
@@ -26,17 +27,16 @@ const Navbar = () => {
                     className="w-6 h-6 fill-current"
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 24 24">
-                    {open && (
+                    {open ? (
                       <path
                         fillRule="evenodd"
                         clipRule="evenodd"
                         d="M18.278 16.864a1 1 0 0 1-1.414 1.414l-4.829-4.828-4.828 4.828a1 1 0 0 1-1.414-1.414l4.828-4.829-4.828-4.828a1 1 0 0 1 1.414-1.414l4.829 4.828 4.828-4.828a1 1 0 1 1 1.414 1.414l-4.828 4.829 4.828 4.828z"
                       />
-                    )}
-                    {!open && (
+                    ) : (
                       <path
                         fillRule="evenodd"
-                        d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z"
+                        d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2z"
                       />
                     )}
                   </svg>
@@ -45,8 +45,8 @@ const Navbar = () => {
                 <Disclosure.Panel className="flex flex-wrap w-full my-5 lg:hidden">
                   <>
                     {navigation.map((item, index) => (
-                      <Link key={index} href="/" className="w-full px-4 py-2 -ml-4 text-gray-500 rounded-md dark:text-gray-300 hover:text-indigo-500 focus:text-indigo-500 focus:bg-indigo-100 dark:focus:bg-gray-800 focus:outline-none">
-                          {item}
+                      <Link key={index} href={item.path} className="w-full px-4 py-2 -ml-4 text-gray-500 rounded-md dark:text-gray-300 hover:text-indigo-500 focus:text-indigo-500 focus:bg-indigo-100 dark:focus:bg-gray-800 focus:outline-none">
+                         {item.label}
                       </Link>
                     ))}
                   </>
@@ -57,12 +57,12 @@ const Navbar = () => {
         </Disclosure>
 
         {/* menu  */}
-        <div className="hidden text-center lg:flex lg:items-center">
-          <ul className="items-center justify-end flex-1 pt-6 relative left-[32rem] list-none lg:pt-0 lg:flex">
+        <div className="hidden text-center lg:flex lg:justify-between lg:items-center">
+          <ul className="items-center justify-end flex-1 pt-6 relative left-[10rem] -top-5 list-none lg:pt-0 lg:flex">
             {navigation.map((menu, index) => (
               <li className="mr-3 nav__item" key={index}>
-                <Link href="/SignIn" className="inline-block px-4 py-2 text-lg font-normal text-gray-800 no-underline rounded-md dark:text-gray-200 hover:text-indigo-500 focus:text-indigo-500 focus:bg-indigo-100 focus:outline-none dark:focus:bg-gray-800">
-                    {menu}
+                <Link href={menu.path} className="inline-block px-4 py-2 text-lg font-normal text-gray-800 no-underline rounded-md dark:text-gray-200 hover:text-indigo-500 focus:text-indigo-500 focus:bg-indigo-100 focus:outline-none dark:focus:bg-gray-800">
+                {menu.label}
                 </Link>
               </li>
             ))}
@@ -70,7 +70,7 @@ const Navbar = () => {
         </div>
 
         <div className="hidden mr-3 space-x-4 lg:flex nav__item relative right-6">
-          <ConnectButton chainStatus="icon" accountStatus="avatar" className="px-6 py-2 text-white bg-indigo-600 hover:bg-indigo-800 ease-in-out duration-300 rounded-md  md:ml-5"  />
+          <ConnectButton chainStatus="icon" accountStatus="avatar" className="px-6 py-2 text-white bg-indigo-600 hover:bg-indigo-800 ease-in-out duration-300 rounded-md md:ml-5" />
 
           {/* <ThemeChanger /> */}
         </div>

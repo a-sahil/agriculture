@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { borrowRequest } from '../utils';
-import AllBorrowReq from "../components/allborrowreq";
+import AllBorrowReq from "./allborrowreq";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const Borrow = () => {
   const [details, setDetails] = useState({
     _itemName: "",
@@ -13,6 +15,7 @@ const Borrow = () => {
       return { ...prev, [name]: value };
     });
   };
+  const [isLoading, setLoading] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -26,18 +29,22 @@ const Borrow = () => {
     }
 
     try {
+      setLoading(true);
       await borrowRequest(_itemName, timePeriod);
       console.log("Borrow request sent successfully");
+      setLoading(false);
+      const notify = () => toast("Borrow request sent successfully");
+      notify();
     } catch (error) {
       console.error("Error sending request:", error);
     }
-
     console.log(details);
   };
 
   return (
-    <div className="flex justify-center relative top-20">
-      <form className="p-12 bg-white rounded-lg shadow-black shadow-2xl" onSubmit={handleSubmit}>
+    <div className="flex justify-center relative ">
+      <ToastContainer />
+      <form className="p-12 bg-white rounded-lg shadow-black shadow-2xl " onSubmit={handleSubmit}>
         <h1 className="text-5xl mb-6 text-black">Borrow items</h1>
         <label htmlFor="_itemName" className="text-black">Item Name:</label><br />
         <input
@@ -61,12 +68,25 @@ const Borrow = () => {
           className="px-14 py-2 border border-gray-300 bg-white text-black rounded"
         /><br /><br />
 
-        <button type="submit" className="px-10 py-2 mt-4 text-lg font-medium text-center text-white bg-[#448aff] hover:bg-[#0d47a1] transition duration-150 ease-out hover:ease-in rounded-md shadow-lg">Submit</button>
+{isLoading ? (
+            <button
+              type="submit"
+              disabled={isLoading}
+              className="px-10 py-2 mt-4 text-lg font-medium text-center text-white bg-[#b0d541] hover:bg-[#a6ca3b] transition duration-150 ease-out hover:ease-in rounded-md"
+            >
+              ...
+            </button>
+          ) : (
+            <button
+              type="submit"
+              disabled={isLoading}
+              className="px-10 py-2 mt-4 text-lg font-medium text-center text-white bg-[#b0d541] hover:bg-[#a6ca3b] transition duration-150 ease-out hover:ease-in rounded-md"
+            >
+              Submit
+            </button>
+          )}
+        {/* <div className="absolute top-0 left-0 right-0">{AllBorrowReq()}</div> */}
       </form>
-
-      <div className="absolute  top-[25rem] left-40">
-        {AllBorrowReq()}
-      </div>
     </div>
   );
 }

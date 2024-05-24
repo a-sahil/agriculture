@@ -14,14 +14,14 @@ const config = getDefaultConfig({
 
 const queryClient = new QueryClient();
 
-export function Providers({ children }: { children: React.ReactNode }) {
-    const [mounted, setMounted] = React.useState(false);
-    React.useEffect(() => setMounted(true), []);
+export function Providers({ children }) {
+    const [mounted, setMounted] = useState(false);
+    useEffect(() => setMounted(true), []);
     return (
-        <WagmiProvider config={config}>
+        <WagmiConfig config={config}>
             <QueryClientProvider client={queryClient}>
                 <RainbowKitProvider>{mounted && children}</RainbowKitProvider>
             </QueryClientProvider>
-        </WagmiProvider>
+        </WagmiConfig>
     );
 }

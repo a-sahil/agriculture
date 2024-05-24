@@ -147,7 +147,7 @@ export async function addCrop(cropName, price, quantity){
 }
 
 export async function getAllCrop(){
-    const contract = await getRegistryContract(true);
+    const contract = await getRegistryContract();
     const data = await contract.getAllCrop();
 
     const items = await Promise.all(
@@ -155,10 +155,10 @@ export async function getAllCrop(){
             let item = {
 
                 cropId: i.cropId.toString(),
-                farmerAddress: i.farmerAddress.toString(),
+                buyerAddress: i.buyerAddress.toString(),
+                sellerAddress: i.sellerAddress.toString(),
                 cropName: i.cropName.toString(),
                 quantity: i.quantity.toString(),
-                // country: i.country.toString(),
                 price: i.price.toString()
             };
             return item;

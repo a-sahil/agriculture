@@ -5,13 +5,11 @@ import { Providers } from "./providers";
 import { Inter } from "next/font/google";
 // import NavBar from "@/components/NavBar";
 // import SideBar from "@/components/SideBar";
-
+import Navbar from "../components/navbar";
 const inter = Inter({ subsets: ["latin"] });
 
 export default function RootLayout({
     children,
-}: {
-    children: React.ReactNode;
 }) {
     return (
         <html lang="en">
@@ -22,6 +20,7 @@ export default function RootLayout({
             <body>
                 <Providers>
                             <div>{children}</div>
+                            {/* <Navbar /> */}
                 </Providers>
             </body>
         </html>

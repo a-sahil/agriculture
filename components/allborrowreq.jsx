@@ -6,10 +6,13 @@ const AllBorrowReq = () => {
   const [borrowData, setBorrowData] = useState([]);
   const [isUserSignIn, setIsUserSignIn] = useState(false);
   const [priceMap, setPriceMap] = useState({});
+  const [isLoading, setLoading] = useState(false);
 
   useEffect(() => {
     const checkUserSignIn = async () => {
+      setLoading(true);
       const address = await getUserAddress();
+      setLoading(false);
       if (address) {
         setFarmerAddress(address);
         setIsUserSignIn(true);
@@ -21,7 +24,9 @@ const AllBorrowReq = () => {
   useEffect(() => {
     const fetchData = async () => {
       if (isUserSignIn) {
+        setLoading(true);
         const borrowRequests = await getAllRequest();
+        setLoading(false);
         console.log(borrowRequests);
         setBorrowData(borrowRequests);
       }
@@ -45,8 +50,10 @@ const AllBorrowReq = () => {
     }
 
     try {
+      setLoading(true);
       await setPrice(requestId, priceBigInt);
       console.log("Price set successfully");
+      setLoading(true);
     } catch (error) {
       console.error("Failed to set price:", error);
     }
@@ -61,39 +68,48 @@ const AllBorrowReq = () => {
 
   return (
     <div className="absolute top-24 left-10">
-      <div className="space-y-4">
+      <div className="space-y-4 w-[45rem] border-2 border-[#219d4d] mb-20 ml-44">
         {borrowData.length > 0 ? (
           borrowData.map(borrow => (
-            <div key={borrow.requestId} className="flex space-x-6 w-[65rem] text-black py-4 m-2 text-lg">
-              <div className="flex space-x-2">
-              {borrow.requestId && <div className="bg-[#fcf7ea] text-[#ebab2d] w-40 h-12 rounded-md shadow-md text-center">Id: {borrow.requestId}</div>}
-              {borrow._itemName && <div className="bg-[#fcf7ea] text-[#ebab2d] w-40 h-12 rounded-md shadow-md text-center">Item: {borrow._itemName}</div>}
-              {borrow._timePeriod && <div className="bg-[#fcf7ea] text-[#ebab2d] w-40 h-12 rounded-md shadow-md text-center ">Days: {borrow._timePeriod}</div>}
+            <div key={borrow.requestId} className="flex space-x-6 w-[44rem] text-black py-4 m-2 text-lg hr">
+              <div className="flex space-x-2 ">
+              {borrow.requestId && <div className="bg-[#fcf7ea] text-[#ebab2d] w-28 h-10 rounded-md shadow-md text-center ">Id: {borrow.requestId}</div>}
+              {borrow._itemName && <div className="bg-[#fcf7ea] text-[#ebab2d] w-28 h-10 rounded-md shadow-md text-center">Item: {borrow._itemName}</div>}
+              {borrow._timePeriod && <div className="bg-[#fcf7ea] text-[#ebab2d] w-28 h-10 rounded-md shadow-md text-center ">Days: {borrow._timePeriod}</div>}
               </div>
              
-              <div>
+              <div className="space-x-2 flex">
               <input
                 type="text"
                 placeholder="Set price"
                 value={priceMap[borrow.requestId] || ""}
                 onChange={(e) => handlePriceChange(borrow.requestId, e.target.value)}
-                className=" border border-gray-300 rounded"
+                className="border border-gray-300 rounded py-1 px-2" 
               />
-              <button
-                className="px-1 rounded-md bg-[#7efeab] hover:bg-[#219d4d] text-gray ease-in-out duration-500 text-white opacity-80 shadow-lg"
-                onClick={() => handleSetPrice(borrow.requestId)}
-              >
-                Set Price
-              </button>
+
+{isLoading ? (
+               <button
+               className="px-2 py-1 rounded-md bg-[#7efeab] hover:bg-[#219d4d] border-2 border-[#219d4d] text-gray ease-in-out duration-500 text-white opacity-80 shadow-lg whitespace-nowrap"
+               onClick={() => handleSetPrice(borrow.requestId)}
+             >
+              ...
+            </button>
+          ) : (
+            <button
+              type="submit"
+              disabled={isLoading}
+              className="px-10 py-2 mt-4 text-lg font-medium text-center text-white bg-[#b0d541] hover:bg-[#a6ca3b] transition duration-150 ease-out hover:ease-in rounded-md"
+            >
+               Set Price
+            </button>
+          )}
+
+
+            
               </div>
-             
-              {/* <button
-                className="px-4 py-2 rounded-md bg-blue-500 hover:bg-blue-700 text-white"
-                onClick={() => handlePurchase(borrow.borrowId)}
-              >
-                Purchase
-              </button> */}
+              <hr className="my-4 border-green-800 px-[22.5rem] relative top-8 right-[44.5rem]" />
             </div>
+            
           ))
         ) : (
           <div>No borrow requests available</div>

@@ -6,7 +6,10 @@ const Hero = () => {
   return (
     <>
       <Container className="flex flex-wrap ">
-        <div className="flex items-center w-full lg:w-1/2">
+      <div className="absolute left-0 top-0 h-full w-1/2 overflow-hidden">
+      <div className="w-64 h-64 absolute left-0 -top-2 rounded-ee-full bg-gradient-to-r from-[#fee6b7] via-[#fff2da] to-[#fef9ec]"></div>
+      </div>
+        <div className="flex items-center w-full lg:w-1/2 relative top-24">
           <div className="max-w-2xl mb-8 ml-12">
             <h1 className="text-4xl font-bold leading-snug tracking-tight text-gray-800 lg:text-4xl lg:leading-tight xl:text-6xl xl:leading-tight dark:text-white">
               Free Landing Page Template for startups
@@ -16,19 +19,9 @@ const Hero = () => {
               template for startups and indie projects. Its built with
               Next.js & TailwindCSS. And its completely open-source.
             </p>
-
-            <div className="flex flex-col items-start space-y-3 sm:space-x-4 sm:space-y-0 sm:items-center sm:flex-row">
-              <a
-                href="https://web3templates.com/templates/nextly-landing-page-template-for-startups"
-                target="_blank"
-                rel="noopener"
-                className="px-8 py-4 text-lg font-medium text-center text-white bg-indigo-600 hover:bg-indigo-800 ease-in-out duration-300 rounded-md ">
-                Connect Wallet
-              </a>
-            </div>
           </div>
         </div>
-        <div className="flex flex-1 flex-col items-center justify-center relative top-12">
+        <div className="flex flex-1 flex-col items-center justify-center relative top-32">
         <div
           className="h-[105%] w-[90%] rounded-t-full rounded-bl-full rounded-br-[145rem] bg-primary
         bg-[url('https://images.unsplash.com/photo-1536147210925-5cb7a7a4f9fe?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Z3JlZW4lMjBwbGFudHxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80')]"

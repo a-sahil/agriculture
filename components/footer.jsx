@@ -2,7 +2,7 @@ import React from 'react'
 import Link from "next/link";
 const Footer = () => {
   return (
-    <footer className="absolute top-[100%] left-6 right-6 bg-[#104f27]  rounded-lg p-8  ">
+    <footer className="absolute top-[100%] left-6 right-6 bg-[#104f27]  rounded-lg p-8 ">
 <div className="absolute bottom-6 left-6 right-6 top-6 -z-1 rounded-lg bg-primary brightness-50 " />
     <div className="flex justify-between text-sm font-light tracking-tight">
       <div className="flex basis-[14%] flex-col items-center gap-y-5 opacity-90 brightness-0 invert">
