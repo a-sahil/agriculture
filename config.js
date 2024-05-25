@@ -1,6 +1,6 @@
 export const RPCKey = ``;
 
-export const BnbRegistry = `0x2d00FA9116E1133bA0Fa277aBB6dE199b149eC76`;
+export const BnbRegistry = `0x684A00B2da6e3A1857155899e0123F14f910d0b8`;
 export const APIConsumer = `0x2d8482a14c25C53cd0606068cbAC795c69E9500c`;
 export const MyToken = `0x91E714f998B1AAe75b133E0467b5FAA2783f5D0A`;
 export const comoditiesContract = `0xC3a7ef1A48C7E42664dc6beE93b18Abd973159B5`;
@@ -112,19 +112,6 @@ export const abiRegistry =`[
 	{
 		"inputs": [
 			{
-				"internalType": "uint256",
-				"name": "_cropId",
-				"type": "uint256"
-			}
-		],
-		"name": "sell",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
 				"internalType": "address",
 				"name": "muavzaContractAddress",
 				"type": "address"
@@ -177,6 +164,19 @@ export const abiRegistry =`[
 		],
 		"name": "farmerVerified",
 		"type": "event"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_cropId",
+				"type": "uint256"
+			}
+		],
+		"name": "sell",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
 	},
 	{
 		"inputs": [
@@ -457,6 +457,49 @@ export const abiRegistry =`[
 				"internalType": "struct registry.Farmer[]",
 				"name": "",
 				"type": "tuple[]"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "farmerAddress",
+				"type": "address"
+			}
+		],
+		"name": "getArea",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "buyerAddress",
+				"type": "address"
+			}
+		],
+		"name": "getStake",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
 			}
 		],
 		"stateMutability": "view",
