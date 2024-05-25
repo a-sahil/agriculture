@@ -139,6 +139,23 @@ export async function buyerStake(amount){
     console.log("buyer registered and staked");
 }
 
+export async function getStakeAmount() {
+    const contract = await getRegistryContract();
+    const address = await getUserAddress();
+    const data = await contract.getStake(address);
+    console.log("dao id", data);
+    return data;
+}
+
+export async function getArea() {
+    const contract = await getRegistryContract();
+    const address = await getUserAddress();
+    const data = await contract.getArea(address);
+    console.log("dao id", data);
+    return data;
+}
+
+
 export async function addCrop(cropName, price, quantity){
     const contract = await getRegistryContract(true);
     const tx = await contract.addCrop(cropName, price, quantity);

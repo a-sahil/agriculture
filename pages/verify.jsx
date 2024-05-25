@@ -59,32 +59,48 @@ const Verify = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-r from-green-300 via-blue-500 to-purple-600 flex justify-center items-center">
+    <div className="flex justify-center items-center">
       <ToastContainer />
-      <div className="absolute top-24 left-10 bg-white bg-opacity-70 p-10 rounded-xl shadow-xl">
-        <div className="space-y-6">
-          {farmersData.length > 0 ? (
-            farmersData.map(farmersData => (
-              <div key={farmersData.farmerId} className="flex flex-col md:flex-row md:items-center md:space-x-12 py-4 m-2 text-lg bg-gradient-to-r from-white via-gray-100 to-gray-200 p-6 rounded-xl shadow-lg transition-transform transform  border border-gray-300">
-                <div className="flex flex-col md:flex-row md:items-center md:space-x-12 py-4 m-2 hover:scale-105">
-                  {farmersData.farmerAddress && <div className="ml-6 text-gray-800 font-medium">User Address: <span className="font-semibold">{farmersData.farmerAddress}</span></div>}
-                  {farmersData.area && <div className="text-gray-800 font-medium">Area: <span className="font-semibold">{farmersData.area}</span></div>}
-                  {farmersData.state && <div className="text-gray-800 font-medium">State: <span className="font-semibold">{farmersData.state}</span></div>}
-                </div>
-                <button
-                  className={`relative md:left-80 px-8 py-3 mt-4 md:mt-0 hover:scale-105 rounded-md text-white transition-all ease-in-out duration-500 ${
-                    farmersData.verified ? 'bg-red-500 cursor-not-allowed' : 'bg-indigo-600 hover:bg-indigo-800'
-                  }`}
-                  onClick={() => handleVerify(farmersData.farmerId)}
-                  disabled={farmersData.verified}
-                >
-                  {farmersData.verified ? 'Verified' : 'Verify'}
-                </button>
-              </div>
-            ))
-          ) : (
-            <div className="text-center text-white">No farmers data available</div>
-          )}
+      <div className="absolute top-24  bg-white bg-opacity-70 p-8 rounded-xl shadow-2xl w-screen">
+        <div className="overflow-x-auto">
+          <table className="min-w-full bg-white">
+            <thead className="bg-gray-50 border-b">
+              <tr>
+                <th className="text-left p-4">ID</th>
+                <th className="text-left p-4">User Address</th>
+                <th className="text-left p-4">Area</th>
+                <th className="text-left p-4">State</th>
+                <th className="text-left p-4">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              {farmersData.length > 0 ? (
+                farmersData.map((farmersData) => (
+                  <tr key={farmersData.farmerId} className="border-b hover:bg-gray-50">
+                    <td className="p-4">{farmersData.farmerId}</td>
+                    <td className="p-4">{farmersData.farmerAddress}</td>
+                    <td className="p-4">{farmersData.area}</td>
+                    <td className="p-4">{farmersData.state}</td>
+                    <td className="p-4">
+                      <button
+                        className={`px-4 py-2 rounded-md text-white ${
+                          farmersData.verified ? 'bg-red-500 cursor-not-allowed' : 'bg-indigo-600 hover:bg-indigo-800'
+                        }`}
+                        onClick={() => handleVerify(farmersData.farmerId)}
+                        disabled={farmersData.verified}
+                      >
+                        {farmersData.verified ? 'Verified' : 'Verify'}
+                      </button>
+                    </td>
+                  </tr>
+                ))
+              ) : (
+                <tr>
+                  <td colSpan="5" className="p-4 text-center text-gray-500">No farmers data available</td>
+                </tr>
+              )}
+            </tbody>
+          </table>
         </div>
       </div>
     </div>

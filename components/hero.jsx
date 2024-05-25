@@ -9,7 +9,7 @@ const Hero = () => {
       <div className="absolute left-0 top-0 h-full w-1/2 overflow-hidden">
       <div className="w-64 h-64 absolute left-0 -top-2 rounded-ee-full bg-gradient-to-r from-[#fee6b7] via-[#fff2da] to-[#fef9ec]"></div>
       </div>
-        <div className="flex items-center w-full lg:w-1/2 relative top-24">
+        <div className="flex items-center w-full lg:w-1/2 relative top-56">
           <div className="max-w-2xl mb-8 ml-12">
             <h1 className="text-4xl font-bold leading-snug tracking-tight text-gray-800 lg:text-4xl lg:leading-tight xl:text-6xl xl:leading-tight dark:text-white">
               Free Landing Page Template for startups

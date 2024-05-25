@@ -7,11 +7,12 @@ import Modal from "../components/Modal";
 import Modal2 from "../components/Modal2";
 import AddCrop from "./addCrops";
 import Borrow from "../components/borrow";
-import AllBorrowReq from "../components/allborrowreq";
+import AllBorrowReq from "./allborrowreq";
+import AddLand from "../components/addland";
 
 const Header = () => {
-  const router = useRouter();
   const [showModal, setShowModal] = useState(false);
+  const [showModal1, setShowModal1] = useState(false);
   const [showModal2, setShowModal2] = useState(false);
 
   return (
@@ -58,15 +59,15 @@ const Header = () => {
       <div className="flex max-h-full min-h-full flex-1 flex-col items-center justify-between relative top-28 right-44 whitespace-nowrap">
         <button
           className="flex items-center justify-between rounded-xl bg-primary bg-opacity-20 p-3 px-20 text-2xl text-primary duration-300 hover:bg-opacity-70 hover:text-back bg-[#7afaa5] hover:bg-[#63ba82] relative top-16 "
-          onClick={() => router.push("/claim")}
+          onClick={() => setShowModal1(true)}
         >
           <img
             src="/images/placeholder-land.png"
             alt="land"
-            className="w-[55%] relative right-12"
+            className="w-[55%] relative right-16"
           />
-          <h3 className="font-raleway font-semibold tracking-tight relative -left-5 text-[#249c4d]">
-            Request Claim
+          <h3 className="font-raleway font-semibold tracking-tight relative   text-[#249c4d]">
+            Add Land
           </h3>
         </button>
         <button
@@ -84,11 +85,16 @@ const Header = () => {
           onClick={() => setShowModal2(true)}
         >
           <img src="/images/sad-farmer.png" alt="land" className="w-[27%] relative right-12" />
-          <h3 className="font-raleway font-semibold tracking-tight relative left-10 text-[#249c4d]">
+          <h3 className="font-raleway font-semibold tracking-tight relative left-5 text-[#249c4d]">
             Borrow items
           </h3>
         </button>
       </div>
+      
+      <Modal isVisible={showModal1} onClose={() => setShowModal1(false)}>
+        <div>{AddLand()}</div>
+      </Modal>
+
       <Modal isVisible={showModal} onClose={() => setShowModal(false)}>
         <div>{AddCrop()}</div>
       </Modal>

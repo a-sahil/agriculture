@@ -9,3 +9,20 @@
   }
 }
 
+.hover-effect span {
+  display: inline-block;
+  transition: transform 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+.hover-effect span:nth-child(1):hover {
+  transform: scale(1.2);
+  color: #d4a017;
+}
+
+.hover-effect span:nth-child(2):hover {
+  transform: scale(1.2);
+  color: #1d873e;
+}
+
+
+

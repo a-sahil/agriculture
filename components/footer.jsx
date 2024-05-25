@@ -92,7 +92,7 @@ const Footer = () => {
       </div>
     </div>
     <div className="my-2 w-full border border-back"></div>
-    <div className="mt-4 text-xs ">© Agrosurance 2023</div>
+    <div className="mt-4 text-xs ">© AgroBuddy 2023</div>
     </footer>
     
   )

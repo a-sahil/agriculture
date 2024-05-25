@@ -1,6 +1,6 @@
 'use client'
 import React from 'react'
- import AddCrop from '../pages/addCrops'
+import AddCrop from '../pages/addCrops'
 
 const Modal = ({isVisible , onClose , children}) => {
   if(!isVisible) return null;

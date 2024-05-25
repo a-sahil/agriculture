@@ -35,8 +35,8 @@ const AllCrop = () => {
     try {
       setLoading(true);
       await sell(cropId);
-      // const updatedCropsData = await getAllCrop();
-      // setCropData(updatedCropsData);
+      const updatedCropsData = await getAllCrop();
+      setCropData(updatedCropsData);
       setLoading(false);
       const notify = () => toast("Crops buy successfully!");
       notify();
@@ -47,60 +47,42 @@ const AllCrop = () => {
 
   return (
     <div>
-      <div className="absolute top-24 left-10">
-        <div className="space-y-4 ">
-          {cropData.length > 0 ? (
-            cropData.map((crop) => (
-              <div
-                key={crop.cropId}
-                className="flex space-x-6 w-[65rem] text-black py-4 m-2 text-lg "
-              >
-                {crop.cropId && (
-                  <div className="bg-[#fcf7ea] text-[#ebab2d] w-36 h-10 rounded-md shadow-md text-center ">
-                    cropId: {crop.cropId}
-                  </div>
-                )}
-                {crop.cropName && (
-                  <div className="bg-[#fcf7ea] text-[#ebab2d] w-44 h-10 rounded-md shadow-md text-center ml-6 whitespace-nowrap">
-                    CropName: {crop.cropName}
-                  </div>
-                )}
-                {crop.quantity && (
-                  <div className="bg-[#fcf7ea] text-[#ebab2d] w-36 h-10 rounded-md shadow-md text-center ">
-                    Quantity: {crop.quantity}
-                  </div>
-                )}
-                <button className="relative left-20 px-12 py-2 rounded-md bg-[#7efeab] hover:bg-[#219d4d] text-gray ease-in-out duration-500 text-white opacity-80 shadow-lg"
-                  disabled={isLoading}
-                  onClick={() => handleBuyCrop(crop.cropId)}
-                  >
-                     Buy crop
-                  </button>
-                
-                {/* {isLoading ? (
+ <div className="mt-28 mx-4 absolute left-[44rem]">
+      <div className="bg-white shadow-md rounded-lg overflow-hidden w-[36rem]">
+        <div className="bg-[#fcf7ea] border-b border-gray-200 text-left text-xs font-semibold uppercase tracking-wider text-gray-500">
+          <div className="flex p-4">
+            <div className="w-1/4">CropId</div>
+            <div className="w-1/4">CropName</div>
+            <div className="w-1/4">Quantity</div>
+            <div className="w-1/4">Action</div>
+          </div>
+        </div>
+        {cropData.length > 0 ? (
+          cropData.map((crop) => (
+            <div key={crop.cropId} className="border-b border-gray-200 text-gray-700">
+              <div className="flex items-center p-4 hover:bg-gray-50">
+                <div className="w-1/4 ">{crop.cropId}</div>
+                <div className="w-1/4 ">{crop.cropName}</div>
+                <div className="w-1/4 ">{crop.quantity}</div>
+                <div className="w-1/4 flex ">
                   <button
-                    className="relative -top-4 px-10 py-2 mt-4 text-lg font-medium text-center text-white bg-[#b0d541] hover:bg-[#a6ca3b] transition duration-150 ease-out hover:ease-in rounded-md"
-                  >
-                   ...
-                  </button>
-                ) : (
-                  <button
+                    className="px-4 py-2 rounded-md bg-[#e8f4ec] text-[#219d4d] border-2 border-[#219d4d] hover:bg-[#219d4d] hover:text-white transition ease-in-out duration-500 whitespace-nowrap"
                     disabled={isLoading}
-                    className="relative -top-4 px-10 py-2 mt-4 text-lg font-medium text-center text-white bg-[#b0d541] hover:bg-[#a6ca3b] transition duration-150 ease-out hover:ease-in rounded-md"
                     onClick={() => handleBuyCrop(crop.cropId)}
                   >
-                    Buy crop
+                    {isLoading ? '...' : 'Buy Crop'}
                   </button>
-                )} */}
+                </div>
               </div>
-            ))
-          ) : (
-            <div>Add crops to purchase</div>
-          )}
-          
-        </div>
-        <ToastContainer />
+            </div>
+          ))
+        ) : (
+          <div className="p-4 text-center text-gray-500">Add crops to purchase</div>
+        )}
       </div>
+      <ToastContainer />
+    </div>
+
     </div>
   );
 };
