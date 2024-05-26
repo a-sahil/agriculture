@@ -44,8 +44,8 @@ const AddLand = () => {
     <div className="flex justify-center relative ">
       <ToastContainer />
       <form className='p-12 bg-white rounded-lg shadow-black shadow-2xl' onSubmit={handleSubmit}>
-  <h1 className="text-5xl mb-6 text-black">Add Land</h1>
-  <label htmlFor="area" className='text-black'>Area:</label><br />
+  <h1 className="text-5xl mb-6 text-[#209d4c]">Add Land</h1>
+  <label htmlFor="area" className='text-[#209d4c]'>Area:</label><br />
   <input
     type="text"
     id="area"
@@ -57,7 +57,7 @@ const AddLand = () => {
     className="px-5 py-2 w-72 border border-gray-300 bg-white text-black rounded"
   /><br /><br />
 
-  <label htmlFor="price" className='text-black'>Price:</label><br />
+  <label htmlFor="price" className='text-[#209d4c]'>Price:</label><br />
   <input
     type="text"
     id="price"
@@ -69,7 +69,7 @@ const AddLand = () => {
     className="px-5 py-2 w-72 border border-gray-300 bg-white text-black rounded"
   /><br /><br />
 
-  <label htmlFor="days" className='text-black'>Number Of Days:</label><br />
+  <label htmlFor="days" className='text-[#209d4c]'>Number Of Days:</label><br />
   <input
     type="text"
     id="days"
@@ -85,7 +85,7 @@ const AddLand = () => {
     <button
       type="submit"
       disabled={isLoading}
-      className="px-10 py-2 mt-4 text-lg font-medium text-center text-white bg-[#b0d541] hover:bg-[#a6ca3b] transition duration-150 ease-out hover:ease-in rounded-md"
+      className="px-10 py-2 mt-4 text-lg font-medium text-center bg-[#e8f4ec] text-[#219d4d] border-2 border-[#219d4d] hover:bg-[#219d4d] hover:text-white transition ease-in-out duration-500 whitespace-nowrap rounded-md"
     >
       ...
     </button>
@@ -93,7 +93,7 @@ const AddLand = () => {
     <button
       type="submit"
       disabled={isLoading}
-      className="px-10 py-2 mt-4 text-lg font-medium text-center text-white bg-[#b0d541] hover:bg-[#a6ca3b] transition duration-150 ease-out hover:ease-in rounded-md"
+      className="px-10 py-2 mt-4 text-lg font-medium text-centerbg-[#e8f4ec] text-[#219d4d] border-2 border-[#219d4d] hover:bg-[#219d4d] hover:text-white transition ease-in-out duration-500 whitespace-nowrap rounded-md"
     >
       Submit
     </button>

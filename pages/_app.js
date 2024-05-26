@@ -7,7 +7,7 @@ import { mainnet, polygon, opBNBTestnet, bscTestnet } from "wagmi/chains";
 import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
 import * as React from "react";
 import Navbar from "../components/navbar";
-import ProjectName from "../components/projectname";
+ import ProjectName from "./projectname";
 const config = getDefaultConfig({
   appName: "My RainbowKit App",
   projectId: "95f8ce26a83baf6d9b6db95a07e082a1",

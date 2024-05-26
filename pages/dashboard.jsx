@@ -91,7 +91,8 @@ const Header = () => {
         </button>
       </div>
       
-      <Modal isVisible={showModal1} onClose={() => setShowModal1(false)}>
+      <Modal isVisible={showModal1} onClose={() => setShowModal1(false)}
+      >
         <div>{AddLand()}</div>
       </Modal>
 

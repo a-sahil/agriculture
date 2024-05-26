@@ -31,8 +31,8 @@ const Stake = () => {
 
   return (
     <div>
-<div className="absolute  top-20">
-  <video className="" autoPlay loop muted playsInline>
+<div className="absolute  top-8 -left-10 ">
+  <video className="w-[50rem]" autoPlay loop muted playsInline>
     <source src="/videos/happy-farmer1.mp4" type="video/mp4" />
     {/* Add additional source elements for different video formats if needed */}
     Your browser does not support the video tag.

@@ -18,10 +18,10 @@ const Footer = () => {
         <h5 className="font-semibold">Explore</h5>
         <div className="my-7 flex flex-col gap-y-3">
           <Link href="/">Home</Link>
-          <Link href="/about">About</Link>
-          <Link href="/contact">Contact</Link>
-          <Link href="/methodology">Methodology</Link>
-          <Link href="/stake">Become a Staker</Link>
+          <Link href="/register">Register</Link>
+          <Link href="/dashboard">DashBoard</Link>
+          <Link href="/Claim">Claim</Link>
+          <Link href="/staker">Staker</Link>
         </div>
       </div>
       <div className="flex flex-col text-white">
@@ -92,7 +92,7 @@ const Footer = () => {
       </div>
     </div>
     <div className="my-2 w-full border border-back"></div>
-    <div className="mt-4 text-xs ">© AgroBuddy 2023</div>
+    <div className="mt-4 text-xs ">© AgroBuddy 2024</div>
     </footer>
     
   )
