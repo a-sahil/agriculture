@@ -64,8 +64,8 @@ const SignIn = () => {
             name="_area"
             value={details._area}
             onChange={handleChange}
-            placeholder="hectares"
-            className="px-14 py-2 border border-gray-300 bg-[#fff9e7] text-black rounded"
+            placeholder="Hectares"
+            className="px-5 py-2 w-72 border border-gray-300 bg-[#fff9e7] text-black rounded"
           />
           <br />
           <br />
@@ -81,7 +81,7 @@ const SignIn = () => {
             placeholder="Enter your State"
             value={details._state}
             onChange={handleChange}
-            className="px-14 py-2 border border-gray-300  bg-[#fff9e7] text-black rounded"
+            className="px-5 py-2 w-72 border border-gray-300  bg-[#fff9e7] text-black rounded"
           />
           <br />
           <br />
@@ -92,7 +92,7 @@ const SignIn = () => {
               name="_country"
               value={details._country}
               onChange={handleChange}
-              className=" px-14 py-2 flex border border-gray-300 bg-[#fff9e7] rounded"
+              className="px-5 py-2 w-72 flex border border-gray-300 bg-[#fff9e7] text-black rounded"
               placeholder="Select Your Country"
               required
             >

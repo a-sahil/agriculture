@@ -58,7 +58,7 @@ const Navbar = () => {
 
         {/* menu  */}
         <div className="hidden text-center lg:flex lg:justify-between lg:items-center">
-          <ul className="items-center justify-end flex-1 pt-6 relative left-[10rem] -top-5 list-none lg:pt-0 lg:flex">
+          <ul className="items-center justify-end flex-1 pt-6 relative left-[11rem] -top-5 list-none lg:pt-0 lg:flex">
             {navigation.map((menu, index) => (
               <li className="mr-3 nav__item" key={index}>
                 <Link href={menu.path} className="inline-block px-4 py-2 text-lg font-normal text-gray-800 hover:underline-offset-2 rounded-md dark:text-gray-200 hover:text-greean-600 focus:text-green-600 hover:text-[#17a34b] focus:bg-[#e8f4ec] focus:outline-none dark:focus:bg-gray-800">
