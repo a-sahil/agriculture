@@ -42,6 +42,7 @@
     "react-switch": "^7.0.0",
     "react-toastify": "^10.0.5",
     "solc": "^0.8.24",
+    "typewriter-effect": "^2.21.0",
     "viem": "^2.7.22",
     "wagmi": "^2.5.7",
     "web3modal": "^1.9.12"

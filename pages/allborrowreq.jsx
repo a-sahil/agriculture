@@ -7,6 +7,7 @@ const AllBorrowReq = () => {
   const [isUserSignIn, setIsUserSignIn] = useState(false);
   const [priceMap, setPriceMap] = useState({});
   const [isLoading, setLoading] = useState(false);
+  const [loadingPrice, setLoadingPrice] = useState({});
 
   useEffect(() => {
     const checkUserSignIn = async () => {
@@ -50,12 +51,13 @@ const AllBorrowReq = () => {
     }
 
     try {
-      setLoading(true);
+      setLoadingPrice((prev) => ({ ...prev, [requestId]: true }));
       await setPrice(requestId, priceBigInt);
       console.log("Price set successfully");
-      setLoading(false);
+      setLoadingPrice((prev) => ({ ...prev, [requestId]: false }));
     } catch (error) {
       console.error("Failed to set price:", error);
+      setLoadingPrice((prev) => ({ ...prev, [requestId]: false }));
     }
   };
 
@@ -70,7 +72,7 @@ const AllBorrowReq = () => {
     <div>
     <div className="flex justify-center items-center  bg-gray-100 absolute left-0 right-0 max-h-full">
       
-      <div className="bg-white p-6 rounded-lg shadow-lg w-[30rem] max-w-5xl relative top-48 ">
+      <div className="bg-white p-6 rounded-lg shadow-lg w-[30rem] max-w-5xl relative top-44 ">
         <table className="min-w-full divide-y divide-gray-200">
           <thead className="bg-gray-50">
             <tr>
@@ -112,16 +114,15 @@ const AllBorrowReq = () => {
                   <td className="px-4 py-4 whitespace-nowrap text-sm text-gray-900">
                     <button
                       className={`px-4 py-2 rounded-md text-white ${
-                        isLoading
-                          ? "bg-gray-400 cursor-not-allowed"
-                          : "bg-green-500 hover:bg-green-700"
-                      }`}
+                        loadingPrice[borrow.requestId]
+                            ? "bg-gray-400 cursor-not-allowed"
+                            : "bg-green-500 hover:bg-green-700"
+                        }`}
                       onClick={() => handleSetPrice(borrow.requestId)}
-                      disabled={isLoading}
-              
+                      disabled={loadingPrice[borrow.requestId]}
                     >
-                      Set Price
-                      {/* {isLoading ? 'Loading...' : 'Set Price'} */}
+                      
+                      {loadingPrice[borrow.requestId] ? "..." : "Set Price"}
                     </button>
                   </td>
                 </tr>

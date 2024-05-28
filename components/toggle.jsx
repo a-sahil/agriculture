@@ -5,7 +5,7 @@ const ToggleButton = () => {
 
   return (
     <div className=" flex items-center justify-center min-h-screen ">
-      <div className="absolute  top-32  flex items-center rounded-full shadow-lg p-2">
+      <div className="absolute  top-20  flex items-center rounded-full shadow-lg p-2">
         <button
           onClick={() => setIsLand(true)}
           className={`px-4 py-2 rounded-full focus:outline-none transition-colors ${

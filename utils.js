@@ -5,8 +5,11 @@ import {
     addressRegistry,
     comoditiesContract,
     abiRegistry,
-    abiAPIConsumer,
     abiComodities,
+    Sender,
+    reciever,
+    abiSender,
+    abiReciever
 } from "./config";
 // import axios from "axios";
 // import { create } from "@web3-storage/w3up-client";
@@ -58,6 +61,50 @@ export async function getComoditiesContract(providerOrSigner) {
         const contract = new ethers.Contract(
             comoditiesContract,
             abiComodities,
+            signer
+        );
+        return contract;
+    }
+    return contract;
+}
+
+export async function getSenderContract(providerOrSigner) {
+    // const modal = new web3modal();
+    // const connection = await modal.connect();
+    // const provider = new ethers.providers.Web3Provider(connection);
+    const provider = new ethers.BrowserProvider(window.ethereum);
+    const contract = new ethers.Contract(
+        Sender,
+        abiSender,
+        provider
+    );
+    if (providerOrSigner == true) {
+        const signer = await provider.getSigner();
+        const contract = new ethers.Contract(
+            Sender,
+            abiSender,
+            signer
+        );
+        return contract;
+    }
+    return contract;
+}
+
+export async function getRecieverContract(providerOrSigner) {
+    // const modal = new web3modal();
+    // const connection = await modal.connect();
+    // const provider = new ethers.providers.Web3Provider(connection);
+    const provider = new ethers.BrowserProvider(window.ethereum);
+    const contract = new ethers.Contract(
+        reciever,
+        abiReciever,
+        provider
+    );
+    if (providerOrSigner == true) {
+        const signer = await provider.getSigner();
+        const contract = new ethers.Contract(
+            reciever,
+            abiReciever,
             signer
         );
         return contract;
@@ -287,4 +334,82 @@ export async function fetchTotalRequests() {
     const data = await contract.requestId();
     console.log("dao id", data);
     return data;
+}
+
+//------------------------------------------------------------------
+
+export async function getAllRentals(){
+    const contract = await getSenderContract(true);
+    const data = await contract.getAllRentals();
+
+    const items = await Promise.all(
+        data.map(async (i) => {
+            let item = {
+
+                rentalId: i.rentalId.toString(),
+                owner: i.owner.toString(),
+                renter: i.renter.toString(),
+                rentAmount: i.rentAmount.toString(),
+                rentDuration: i.rentDuration.toString(),
+                rentStartTime: i.rentStartTime.toString(),
+                area: i.area.toString(),
+                lastPayment : i.lastPayment.toString()
+            };
+            return item;
+        })
+    );
+
+    console.log("request's Fetched ", items);
+    return items;
+}
+
+
+export async function start(
+    rentAmount, 
+    rentDuration, 
+    area
+    ){
+    const contract = await getSenderContract(true);
+    const tx = await contract.start( 
+        rentAmount, 
+        rentDuration, 
+        area, 
+        "16281711391670634445", 
+        "0x5f93699d11bc00c45d3d90184cc079a5cd6e4bd7"
+    );
+    await tx.wait();
+    console.log("buyer registered and staked");
+}
+
+
+export async function acceptRental(
+    rentId, 
+    _amount,
+    ){
+    const contract = await getRecieverContract(true);
+    const tx = await contract.acceptRental( 
+        rentId, 
+        _amount, 
+        "0xcab0EF91Bee323d1A617c0a027eE753aFd6997E4", 
+        "13264668187771770619", 
+        "0x2DdE505706c4711c465c79B5568CC2C50454Ece9"
+    );
+    await tx.wait();
+    console.log("buyer registered and staked");
+}
+
+
+export async function getLastReceivedMessageDetails(){
+    const contract = await getRecieverContract();
+    const tx = await contract.getLastReceivedMessageDetails();
+    await tx.wait();
+    console.log(tx);
+}
+
+export async function gameSessions(id){
+    const contract = await getRecieverContract();
+    const tx = await contract.gameSessions(id);
+    await tx.wait();
+    console.log(tx);
+
 }

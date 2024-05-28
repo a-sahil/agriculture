@@ -4,11 +4,11 @@ import { ConnectButton } from "@rainbow-me/rainbowkit";
 
 const Navbar = () => {
   const navigation = [
-    { label: 'Home', path: '/' },
     { label: 'Register', path: '/SignIn' },
     { label: 'Dashboard', path: '/dashboard' },
     { label: 'Claim', path: '/claim' },
     { label: 'Stake', path: '/staker' },
+    { label: 'Items', path: '/allborrowreq' },
   ];
 
   return (
@@ -58,10 +58,10 @@ const Navbar = () => {
 
         {/* menu  */}
         <div className="hidden text-center lg:flex lg:justify-between lg:items-center">
-          <ul className="items-center justify-end flex-1 pt-6 relative left-[11rem] -top-5 list-none lg:pt-0 lg:flex">
+          <ul className="items-center justify-end flex-1 pt-6 relative left-[11rem] -top-1 list-none lg:pt-0 lg:flex">
             {navigation.map((menu, index) => (
               <li className="mr-3 nav__item" key={index}>
-                <Link href={menu.path} className="inline-block px-4 py-2 text-lg font-normal text-gray-800 hover:underline-offset-2 rounded-md dark:text-gray-200 hover:text-greean-600 focus:text-green-600 hover:text-[#17a34b] focus:bg-[#e8f4ec] focus:outline-none dark:focus:bg-gray-800">
+                <Link href={menu.path} className="inline-block px-4 py-2 text-lg font-normal font-sans text-gray-800 hover:underline-offset-2 rounded-md dark:text-gray-200 hover:text-greean-600 focus:text-green-600 hover:text-[#17a34b] focus:bg-[#e8f4ec] focus:outline-none dark:focus:bg-gray-800">
                 {menu.label}
                 </Link>
               </li>
@@ -71,8 +71,6 @@ const Navbar = () => {
 
         <div className="hidden mr-3 space-x-4 lg:flex nav__item relative right-6">
           <ConnectButton chainStatus="icon" accountStatus="avatar" className="px-6 py-2 text-white bg-indigo-600 hover:bg-indigo-800 ease-in-out duration-300 rounded-md md:ml-5" />
-
-          {/* <ThemeChanger /> */}
         </div>
       </nav>
     </div>

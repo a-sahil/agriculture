@@ -66,7 +66,7 @@ const Header = () => {
             alt="land"
             className="w-[55%] relative right-16"
           />
-          <h3 className="font-raleway font-semibold tracking-tight relative   text-[#249c4d]">
+          <h3 className="font-raleway font-semibold tracking-tight relative left-5 text-[#249c4d]">
             Add Land
           </h3>
         </button>
@@ -74,8 +74,8 @@ const Header = () => {
           className="relative top-16 flex items-center justify-between rounded-xl bg-secondary bg-opacity-20 p-1 px-20 text-2xl text-secondary duration-300 hover:bg-opacity-70 hover:text-back bg-[#f3c259] hover:bg-[#ebab2d]"
           onClick={() => setShowModal(true)}
         >
-          <img src="/images/ruined-land.png" alt="land" className="w-[75%] relative right-16" />
-          <h3 className="font-raleway font-semibold tracking-tight relative right-1 text-[#ebab2d]">
+          <img src="/images/ruined-land.png" alt="land" className="w-[72%] relative right-20" />
+          <h3 className="font-raleway font-semibold tracking-tight relative left-1 text-[#ebab2d]">
             Add Crop
           </h3>
         </button>
@@ -85,8 +85,8 @@ const Header = () => {
           onClick={() => setShowModal2(true)}
         >
           <img src="/images/sad-farmer.png" alt="land" className="w-[27%] relative right-12" />
-          <h3 className="font-raleway font-semibold tracking-tight relative left-5 text-[#249c4d]">
-            Borrow items
+          <h3 className="font-raleway font-semibold tracking-tight relative left-14 text-[#249c4d]">
+            Add items
           </h3>
         </button>
       </div>

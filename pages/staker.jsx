@@ -1,12 +1,15 @@
 import React, { useState } from "react";
 import Footer from "../components/footer";
 import AllCrop from "../components/allcrop";
-import { buyerStake, withdrawStake , getStakeAmount ,getArea} from "../utils";
+import { buyerStake, withdrawStake , getStakeAmount} from "../utils";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 
 const Stake = () => {
   const [amount, setAmount] = useState(0);
   const [isButtonClicked, setIsButtonClicked] = useState(false);
+  const [isLoading, setLoading] = useState(false);
 
   const handleStakeChange = (e) => {
     setAmount(e.target.value);
@@ -18,15 +21,32 @@ const Stake = () => {
       return;
     }
     try {
+      setLoading(true);
       await buyerStake(amount);
       setIsButtonClicked(false);
+      setLoading(false);
+      const notify = () => toast("Amount Staked!");
+      notify();
     } catch (error) {
       console.error("Failed to add stake:", error);
     }
   };
 
-  getStakeAmount();
-  getArea();
+  const handleWithdrawStake = async () => {
+    try {
+      setLoading(true);
+      await withdrawStake();
+      setLoading(false);
+      const notify = () => toast("Stake withdrawn!");
+      notify();
+    }
+    catch(error){
+      console.error("Error withdrawing stake" , error);
+    }
+  }
+
+  // getStakeAmount();
+  // getArea();
   
 
   return (
@@ -34,8 +54,6 @@ const Stake = () => {
 <div className="absolute  top-8 -left-10 ">
   <video className="w-[50rem]" autoPlay loop muted playsInline>
     <source src="/videos/happy-farmer1.mp4" type="video/mp4" />
-    {/* Add additional source elements for different video formats if needed */}
-    Your browser does not support the video tag.
   </video>
 </div>
 
@@ -54,9 +72,10 @@ const Stake = () => {
             </button>
             <button
               className="flex items-center gap-x-1 rounded-lg px-4 py-1 tracking-tight text-primary text-2xl bg-[#e8f4ec] text-[#219d4d] border-2 border-[#219d4d] hover:bg-[#219d4d] hover:text-white transition ease-in-out duration-500 whitespace-nowrap"
-              onClick={() => withdrawStake()}
+              disabled={isLoading}
+              onClick={handleWithdrawStake}
             >
-              Withdraw Stake
+              {isLoading ? "..." : "Withdraw Stake"}
             </button>
           </div>
         </div>
@@ -72,14 +91,15 @@ const Stake = () => {
               />
               <button
                 className="flex items-center gap-x-1 w-40 h-8 rounded-lg px-5 relative left-[22rem]  bg-[#fcf7ea] text-[#ebab2d] border-2 border-[#ebab2d] hover:bg-[#ebab2d] hover:text-white whitespace-nowrap transition ease-in-out duration-500"
+                disabled={isLoading}
                 onClick={handleAddStake}
               >
-                Confirm Stake
+               {isLoading ? '...' : 'Confirm Stake'}
               </button>
             </div>
           </div>
         )}
-
+        {/* <div className="text-5xl">{getStakeAmount()}</div> */}
         <div className="relative top-0 left-0 ml-40 ">{AllCrop()}</div>
       </section>
 

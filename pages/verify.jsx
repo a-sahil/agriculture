@@ -10,6 +10,7 @@ const Verify = () => {
   const [state, setState] = useState(null);
   const [farmersData, setFarmersData] = useState([]);
   const [isUserSignIn, setIsUserSignIn] = useState(false);
+  const [loadingStatus, setLoadingStatus] = useState({});
   const [isLoading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -43,7 +44,7 @@ const Verify = () => {
 
   const handleVerify = async (farmerId) => {
     try {
-      setLoading(true);
+      setLoadingStatus((prev) => ({ ...prev, [farmerId]: true }));
       await verifyFarmer(farmerId);
       setFarmersData(prevFarmersData =>
         prevFarmersData.map(farmersData =>
@@ -51,10 +52,11 @@ const Verify = () => {
         )
       );
       console.log("farmer verified");
-      setLoading(false);
+      setLoadingStatus((prev) => ({ ...prev, [farmerId]: false }));
       toast("Farmer is verified");
     } catch (error) {
       console.error('Verification error:', error);
+      setLoadingStatus((prev) => ({ ...prev, [farmerId]: false }));
     }
   };
 
@@ -82,14 +84,14 @@ const Verify = () => {
                     <td className="p-4">{farmersData.area}</td>
                     <td className="p-4">{farmersData.state}</td>
                     <td className="p-4">
-                      <button
+                    <button
                         className={`px-4 py-2 rounded-md text-white ${
                           farmersData.verified ? 'bg-red-500 cursor-not-allowed' : 'bg-indigo-600 hover:bg-indigo-800'
                         }`}
                         onClick={() => handleVerify(farmersData.farmerId)}
-                        disabled={farmersData.verified}
+                        disabled={farmersData.verified || loadingStatus[farmersData.farmerId]}
                       >
-                        {farmersData.verified ? 'Verified' : 'Verify'}
+                        {loadingStatus[farmersData.farmerId] ? 'Verifying...' : (farmersData.verified ? 'Verified' : 'Verify')}
                       </button>
                     </td>
                   </tr>
