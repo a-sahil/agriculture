@@ -7,7 +7,7 @@ import Modal from "../components/Modal";
 import Modal2 from "../components/Modal2";
 import AddCrop from "./addCrops";
 import Borrow from "../components/borrow";
-import AllBorrowReq from "./allborrowreq";
+ import AllBorrowReq from "../components/allborrowreq";
 import AddLand from "../components/addland";
 
 const Header = () => {

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { borrowRequest } from '../utils';
-import AllBorrowReq from "../pages/allborrowreq";
+import AllBorrowReq from "./allborrowreq";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 const Borrow = () => {

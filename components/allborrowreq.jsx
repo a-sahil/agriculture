@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { getUserAddress, setPrice, getAllRequest } from "../utils";
-import Toggle from "../components/toggle";
+import Toggle from "../pages/toggle";
 const AllBorrowReq = () => {
   const [farmerAddress, setFarmerAddress] = useState(null);
   const [borrowData, setBorrowData] = useState([]);
@@ -70,11 +70,11 @@ const AllBorrowReq = () => {
 
   return (
     <div>
-    <div className="flex justify-center items-center  bg-gray-100 absolute left-0 right-0 max-h-full">
+    <div className="flex justify-center items-center  absolute left-0 right-0  max-h-full">
       
-      <div className="bg-white p-6 rounded-lg shadow-lg w-[30rem] max-w-5xl relative top-44 ">
+      <div className="bg-white p-6 rounded-lg shadow-lg w-[30rem] max-w-5xl relative -top-52 ">
         <table className="min-w-full divide-y divide-gray-200">
-          <thead className="bg-gray-50">
+          <thead className="">
             <tr>
               <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                 Item
@@ -138,7 +138,6 @@ const AllBorrowReq = () => {
         </table>
       </div>
     </div>
-    <div>{Toggle()}</div>
     </div>
 
   );

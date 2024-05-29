@@ -7,6 +7,7 @@ import "react-toastify/dist/ReactToastify.css";
 const Claim = () => {
   const [isLoading, setLoading] = useState(false);
   const [isLoading1, setLoading1] = useState(false);
+  const [area, setArea] = useState(null);
 
   const handleRequest = async () => {
     try {
@@ -25,6 +26,9 @@ const Claim = () => {
     try {
       setLoading(true);
       await callClaim();
+      const calculatedArea = getArea();
+      setArea(calculatedArea);
+        
       toast("Farmer claimed successfully!");
     } catch (error) {
       console.error("Fake claim detected. Please try again.", error);
@@ -33,9 +37,7 @@ const Claim = () => {
       setLoading(false);
     }
   };
-
-  const area = getArea();
-
+  
   return (
     <div>
       <ToastContainer />

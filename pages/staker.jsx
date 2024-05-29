@@ -10,6 +10,9 @@ const Stake = () => {
   const [amount, setAmount] = useState(0);
   const [isButtonClicked, setIsButtonClicked] = useState(false);
   const [isLoading, setLoading] = useState(false);
+  const [isLoading1, setLoading1] = useState(false);
+  const [stakeAmount , setStakeAmount] = useState(0);
+  const [withdrawStakeAmount , setWithdrawStakeAmount] = useState(null);
 
   const handleStakeChange = (e) => {
     setAmount(e.target.value);
@@ -24,6 +27,8 @@ const Stake = () => {
       setLoading(true);
       await buyerStake(amount);
       setIsButtonClicked(false);
+      const stakedAmount = await getStakeAmount();
+      setStakeAmount(stakedAmount);
       setLoading(false);
       const notify = () => toast("Amount Staked!");
       notify();
@@ -31,12 +36,14 @@ const Stake = () => {
       console.error("Failed to add stake:", error);
     }
   };
+  console.log(stakeAmount);
 
   const handleWithdrawStake = async () => {
     try {
-      setLoading(true);
-      await withdrawStake();
-      setLoading(false);
+      setLoading1(true);
+      const withdraw = await withdrawStake();
+      setWithdrawStakeAmount(withdraw);
+      setLoading1(false);
       const notify = () => toast("Stake withdrawn!");
       notify();
     }
@@ -45,10 +52,7 @@ const Stake = () => {
     }
   }
 
-  // getStakeAmount();
-  // getArea();
-  
-
+  const displayedAmount = withdrawStakeAmount !== null ? withdrawStakeAmount : stakeAmount[0];
   return (
     <div>
 <div className="absolute  top-8 -left-10 ">
@@ -75,7 +79,7 @@ const Stake = () => {
               disabled={isLoading}
               onClick={handleWithdrawStake}
             >
-              {isLoading ? "..." : "Withdraw Stake"}
+              {isLoading1 ? "..." : "Withdraw Stake"}
             </button>
           </div>
         </div>
@@ -99,7 +103,8 @@ const Stake = () => {
             </div>
           </div>
         )}
-        {/* <div className="text-5xl">{getStakeAmount()}</div> */}
+
+        <h1 className="text-3xl flex justify-center text-center text-[#7dcca1] -ml-20">{`Staked amount is :  ${displayedAmount}`}</h1>
         <div className="relative top-0 left-0 ml-40 ">{AllCrop()}</div>
       </section>
 

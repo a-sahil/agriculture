@@ -8,7 +8,7 @@ const Navbar = () => {
     { label: 'Dashboard', path: '/dashboard' },
     { label: 'Claim', path: '/claim' },
     { label: 'Stake', path: '/staker' },
-    { label: 'Items', path: '/allborrowreq' },
+    { label: 'Items', path: '/toggle' },
   ];
 
   return (
