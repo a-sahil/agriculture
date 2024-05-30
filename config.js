@@ -1,6 +1,6 @@
 export const RPCKey = ``;
 
-export const BnbRegistry = `0x684A00B2da6e3A1857155899e0123F14f910d0b8`;
+export const BnbRegistry = `0x9557614d11e11381A65459cA9CE54259bd723394`;
 export const APIConsumer = `0x2d8482a14c25C53cd0606068cbAC795c69E9500c`;
 export const MyToken = `0x91E714f998B1AAe75b133E0467b5FAA2783f5D0A`;
 export const comoditiesContract = `0xC3a7ef1A48C7E42664dc6beE93b18Abd973159B5`;
@@ -58,6 +58,19 @@ export const abiRegistry =`[
 		"type": "function"
 	},
 	{
+		"inputs": [
+			{
+				"internalType": "bool",
+				"name": "_result",
+				"type": "bool"
+			}
+		],
+		"name": "callFakeClaim",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
 		"inputs": [],
 		"name": "callRequestClaim",
 		"outputs": [
@@ -84,29 +97,6 @@ export const abiRegistry =`[
 			}
 		],
 		"name": "cropRecieved",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "_area",
-				"type": "uint256"
-			},
-			{
-				"internalType": "string",
-				"name": "_state",
-				"type": "string"
-			},
-			{
-				"internalType": "string",
-				"name": "_country",
-				"type": "string"
-			}
-		],
-		"name": "farmerRegister",
 		"outputs": [],
 		"stateMutability": "nonpayable",
 		"type": "function"
@@ -153,6 +143,29 @@ export const abiRegistry =`[
 		],
 		"name": "farmerClaimed",
 		"type": "event"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_area",
+				"type": "uint256"
+			},
+			{
+				"internalType": "string",
+				"name": "_state",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "_country",
+				"type": "string"
+			}
+		],
+		"name": "farmerRegister",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
 	},
 	{
 		"anonymous": false,
