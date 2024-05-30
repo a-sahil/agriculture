@@ -480,3 +480,19 @@ export async function gameSessions(id){
     console.log(tx);
 
 }
+
+export async function farmerDetails(){
+    const contract = await getProviderFromInfura();
+    const address = await getUserAddress();
+    const value = await contract.addressToId(address);
+    const data = await contract.IdToFarmer(value);
+    // await tx.wait();
+    console.log("farmer claim verified", data);
+}
+
+export async function callFakeClaim(_result){
+    const contract = await getRegistryContract(true);
+    const tx = await contract.callFakeClaim(_result);
+    await tx.wait();
+    console.log("farmer claim verified");
+}

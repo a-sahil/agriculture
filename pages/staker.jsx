@@ -52,22 +52,23 @@ const Stake = () => {
     }
   }
 
-  const displayedAmount = withdrawStakeAmount !== null ? withdrawStakeAmount : stakeAmount[0];
+  const displayedAmount = withdrawStakeAmount !== null  ? withdrawStakeAmount : stakeAmount[0];
+  const displayedAmount1 = withdrawStakeAmount !==  null ? withdrawStakeAmount : stakeAmount[1];
   return (
     <div>
-<div className="absolute  top-8 -left-10 ">
+<div className="absolute  top-16 -left-14 ">
   <video className="w-[50rem]" autoPlay loop muted playsInline>
     <source src="/videos/happy-farmer1.mp4" type="video/mp4" />
   </video>
 </div>
 
       <section className="absolute top-28 left-0 right-0">
-        <h1 className="flex items-center gap-x-3 font-raleway text-4xl font-semibold tracking-tight relative top-14 ml-5">
+        <h1 className="flex items-center gap-x-3 font-raleway text-4xl font-semibold tracking-tight relative top-14 ml-10">
           <span className="text-[#ebab2d]">Staking</span> 
   <span className="text-[#219d4d]">Dashboard</span>
         </h1>
         <div className="my-6 flex justify-between relative right-72 ">
-          <div className="flex items-center gap-x-6 absolute left-[79rem] ">
+          <div className="flex items-center gap-x-6 absolute left-[93%] ">
             <button
               className="flex items-center gap-x-1 rounded-lg px-6 py-1 tracking-tight text-secondary text-2xl bg-[#fcf7ea] text-[#ebab2d] border-2 border-[#ebab2d] hover:bg-[#ebab2d] hover:text-white whitespace-nowrap transition ease-in-out duration-500 "
               onClick={() => setIsButtonClicked(true)}
@@ -84,7 +85,7 @@ const Stake = () => {
           </div>
         </div>
         {isButtonClicked && (
-          <div className=" relative top-6 left-[41rem]  w-0 h-0">
+          <div className=" relative top-6 left-[53%]  w-0 h-0">
             <div className="flex -space-x-6 border w-0">
               <input
                 type="number"
@@ -104,13 +105,13 @@ const Stake = () => {
           </div>
         )}
       
-      <div>
-      <h1 className="text-3xl flex justify-center text-center text-[#7dcca1] -ml-20">{`Staked amount :  ${displayedAmount}`}</h1>
-      <h1 className="text-3xl flex justify-center text-center text-[#7dcca1] -ml-20">{`Usable Stake :  ${stakeAmount[1]}`}</h1>
+      <div className="-mt-8">
+      <h1 className="text-3xl flex justify-center text-center text-[#7dcca1] ">{`Staked amount :  ${displayedAmount}`}</h1>
+      <h1 className="text-3xl flex justify-center text-center text-[#7dcca1] ">{`Usable Stake :  ${displayedAmount1}`}</h1>
       </div>
         
         
-        <div className="relative top-0 left-0 ml-40 ">{AllCrop()}</div>
+        <div className="relative top-0 left-0 ml-48 ">{AllCrop()}</div>
       </section>
 
       <Footer />

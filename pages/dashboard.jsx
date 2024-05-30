@@ -55,7 +55,7 @@ const Header = () => {
 
       <div className="flex max-h-full min-h-full flex-1 flex-col items-center justify-between relative top-28 right-44 whitespace-nowrap">
         <button
-          className="flex items-center justify-between rounded-xl bg-primary bg-opacity-20 p-3 px-[25%] text-2xl text-primary duration-300 hover:bg-opacity-70 hover:text-back bg-[#7afaa5] hover:bg-[#63ba82] relative top-16 "
+          className="flex items-center justify-between rounded-xl bg-primary bg-opacity-20 p-2 px-[40%] text-2xl text-primary duration-300 hover:bg-opacity-70 hover:text-back bg-[#7afaa5] hover:bg-[#63ba82] relative top-16 "
           onClick={() => setShowModal1(true)}
         >
           <img
@@ -68,7 +68,7 @@ const Header = () => {
           </h3>
         </button>
         <button
-          className="relative top-12 flex items-center justify-between rounded-xl bg-secondary bg-opacity-20 p-1 px-[24%] text-2xl text-secondary duration-300 hover:bg-opacity-70 hover:text-back bg-[#f3c259] hover:bg-[#ebab2d]"
+          className="relative top-12 flex items-center justify-between rounded-xl bg-secondary bg-opacity-20 p-1 px-[40%] text-2xl text-secondary duration-300 hover:bg-opacity-70 hover:text-back bg-[#f3c259] hover:bg-[#ebab2d]"
           onClick={() => setShowModal(true)}
         >
           <img src="/images/ruined-land.png" alt="land" className="w-[58%] relative right-16" />
@@ -78,7 +78,7 @@ const Header = () => {
         </button>
 
         <button
-          className="relative top-9 flex items-center justify-between rounded-xl bg-secondary bg-opacity-20 p-1 px-[24%] text-2xl text-secondary duration-300 hover:bg-opacity-70 hover:text-back  bg-[#7afaa5] hover:bg-[#63ba82]"
+          className="relative top-9 flex items-center justify-between rounded-xl bg-secondary bg-opacity-20 p-1 px-[40%] text-2xl text-secondary duration-300 hover:bg-opacity-70 hover:text-back  bg-[#7afaa5] hover:bg-[#63ba82]"
           onClick={() => setShowModal2(true)}
         >
           <img src="/images/sad-farmer.png" alt="land" className="w-[27%] relative right-12" />
@@ -87,6 +87,11 @@ const Header = () => {
           </h3>
         </button>
       </div>
+
+      <div className="absolute left-[27%] right-0 top-[75%]">
+        <h1 className="text-4xl font-sans font-semibold text-[#62bb82]">"To forget how to dig the earth and <br/> to tend the soil is to forget ourselves."</h1>
+        <p className="absolute left-[45%] top-20 text-xl text-[#decb6c]"> ~ Mahatma Gandhi</p>
+        </div>
       
       <Modal isVisible={showModal1} onClose={() => setShowModal1(false)}
       >
