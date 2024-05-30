@@ -30,7 +30,7 @@ const ToggleButton = () => {
             !isLand ? 'bg-[#219d4d]' : 'bg-gray-400'
           } text-white`}
         >
-          Commodities
+          Items
         </button>
       </div>
       <div className="mt-20 w-full">

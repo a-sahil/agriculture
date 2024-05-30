@@ -11,7 +11,7 @@ const Footer = () => {
           alt="agrosurance logo"
           className="aspect-square w-1/2"
         />
-        <img src="brand.png" alt="brand name" />
+        <img src="/images/illustrations/agrobuddy.png" alt="brand name" className="ml-12" />
       </div>
 
       <div className="flex flex-col text-white">

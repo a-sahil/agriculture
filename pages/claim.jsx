@@ -86,7 +86,7 @@ const Claim = () => {
 </h1>
 
         <div className="my-6 flex justify-between relative -top-14 right-5">
-          <div className="flex items-center gap-x-6 absolute left-[75rem]">
+          <div className="flex items-center gap-x-6 absolute left-[68rem]">
             <button
               className="flex items-center gap-x-1 rounded-lg px-2 py-1 font-medium tracking-tight text-secondary text-2xl bg-[#fcf7ea] text-[#ebab2d] border-2 border-[#ebab2d] hover:bg-[#ebab2d] hover:text-white whitespace-nowrap transition ease-in-out duration-500"
               onClick={handleRequest}
