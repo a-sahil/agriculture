@@ -1,6 +1,7 @@
 "use client";
 import web3modal from "web3modal";
 import { ethers } from "ethers";
+import { useState } from "react";
 import {
     addressRegistry,
     comoditiesContract,
@@ -11,10 +12,35 @@ import {
     abiSender,
     abiReciever
 } from "./config";
+
 // import axios from "axios";
 // import { create } from "@web3-storage/w3up-client";
 
 // Creating Instances
+
+export async function switchNetworkToAmoy() {
+        await window.ethereum.request({
+            "method": "wallet_switchEthereumChain",
+            "params": [
+              {
+                "chainId": "0x13882"
+              }
+            ]
+        });
+}
+
+export async function switchNetworkToBNBtestnet() {
+    await window.ethereum.request({
+        "method": "wallet_switchEthereumChain",
+        "params": [
+          {
+            "chainId": "0x61"
+          }
+        ]
+    });
+}
+
+
 
 export async function getUserAddress() {
     const accounts = await window.ethereum.request({
@@ -22,6 +48,45 @@ export async function getUserAddress() {
     });
     console.log( accounts[0]);
     return accounts[0];
+}
+
+export async function getProviderFromInfura(){
+    const API_KEY = process.env.INFURA_API_AMOY;
+    const PRIVATE_KEY = process.env.WALLET_PRIVATE_KEY;
+    const Provider = new ethers.JsonRpcProvider(`https://magical-side-tree.bsc-testnet.quiknode.pro/80836c6abe8ab2e6f1e3a2f6bb99e184aaeb4903/`);
+    const signer = new ethers.Wallet('b6abeb21fde96e3855b75eab5b464777c06a8206699f5b40af58ade526e53dbf', Provider);
+    const contract = new ethers.Contract(
+        addressRegistry,
+        abiRegistry,
+        Provider
+    );
+    return contract;
+}
+
+export async function getProviderForComodities(){
+    const API_KEY = process.env.INFURA_API_AMOY;
+    const PRIVATE_KEY = process.env.WALLET_PRIVATE_KEY;
+    const Provider = new ethers.JsonRpcProvider(`https://magical-side-tree.bsc-testnet.quiknode.pro/80836c6abe8ab2e6f1e3a2f6bb99e184aaeb4903/`);
+    const signer = new ethers.Wallet('b6abeb21fde96e3855b75eab5b464777c06a8206699f5b40af58ade526e53dbf', Provider);
+    const contract = new ethers.Contract(
+        comoditiesContract,
+        abiComodities,
+        Provider
+    );
+    return contract;
+}
+
+export async function getProviderForSender(){
+    const API_KEY = process.env.INFURA_API_AMOY;
+    const PRIVATE_KEY = process.env.WALLET_PRIVATE_KEY;
+    const Provider = new ethers.JsonRpcProvider(`https://magical-side-tree.bsc-testnet.quiknode.pro/80836c6abe8ab2e6f1e3a2f6bb99e184aaeb4903/`);
+    const signer = new ethers.Wallet('b6abeb21fde96e3855b75eab5b464777c06a8206699f5b40af58ade526e53dbf', Provider);
+    const contract = new ethers.Contract(
+        Sender,
+        abiSender,
+        Provider
+    );
+    return contract;
 }
 
 export async function getRegistryContract(providerOrSigner) {
@@ -118,7 +183,7 @@ export async function register(_area, _state, _country ){
     const contract = await getRegistryContract(true);
     const tx = await contract.farmerRegister(_area, _state, _country );
     await tx.wait();
-    console.log("Farmer registered");
+    console.log("Farmer registered",tx);
 }
 
 
@@ -146,7 +211,7 @@ export async function callClaim(){
 }
 
 export async function getAllFarmers(){
-    const contract = await getRegistryContract(true);
+    const contract = await getProviderFromInfura( );
     const data = await contract.getAllFarmers();
 
     const items = await Promise.all(
@@ -172,7 +237,7 @@ export async function getAllFarmers(){
 }
 
 export async function fetchTotalFarmer() {
-    const contract = await getRegistryContract();
+    const contract = await getProviderFromInfura();
     const address = await getUserAddress();
     const data = await contract.farmerId();
     console.log("dao id", data);
@@ -187,7 +252,7 @@ export async function buyerStake(amount){
 }
 
 export async function getStakeAmount() {
-    const contract = await getRegistryContract();
+    const contract = await getProviderFromInfura();
     const address = await getUserAddress();
     const data = await contract.getStake(address);
     console.log("dao id", data);
@@ -195,7 +260,7 @@ export async function getStakeAmount() {
 }
 
 export async function getArea() {
-    const contract = await getRegistryContract();
+    const contract = await getProviderFromInfura();
     const address = await getUserAddress();
     const data = await contract.getArea(address);
     console.log("dao id", data);
@@ -207,11 +272,12 @@ export async function addCrop(cropName, price, quantity){
     const contract = await getRegistryContract(true);
     const tx = await contract.addCrop(cropName, price, quantity);
     await tx.wait();
-    console.log("buyer registered and staked");
+    console.log("buyer registered and staked" , tx);
+    return tx;
 }
 
 export async function getAllCrop(){
-    const contract = await getRegistryContract();
+    const contract = await getProviderFromInfura();
     const data = await contract.getAllCrop();
 
     const items = await Promise.all(
@@ -263,7 +329,7 @@ export async function withdrawStake(){
 }
 
 export async function fetchTotalCrop() {
-    const contract = await getRegistryContract();
+    const contract = await getProviderFromInfura();
     const address = await getUserAddress();
     const data = await contract.cropId();
     console.log("dao id", data);
@@ -271,7 +337,7 @@ export async function fetchTotalCrop() {
 }
 
 export async function cropToMsp(cropName) {
-    const contract = await getRegistryContract();
+    const contract = await getProviderFromInfura();
     const address = await getUserAddress();
     const data = await contract.cropToMSP(cropName);
     console.log("dao id", data);
@@ -305,7 +371,7 @@ export async function setPrice(_requestId, _price){
 
 
 export async function getAllRequest(){
-    const contract = await getComoditiesContract(true);
+    const contract = await getProviderForComodities();
     const data = await contract.getAllRequest();
 
     const items = await Promise.all(
@@ -329,7 +395,7 @@ export async function getAllRequest(){
 }
 
 export async function fetchTotalRequests() {
-    const contract = await getComoditiesContract();
+    const contract = await getProviderForComodities();
     const address = await getUserAddress();
     const data = await contract.requestId();
     console.log("dao id", data);
@@ -339,7 +405,7 @@ export async function fetchTotalRequests() {
 //------------------------------------------------------------------
 
 export async function getAllRentals(){
-    const contract = await getSenderContract(true);
+    const contract = await getProviderForSender();
     const data = await contract.getAllRentals();
 
     const items = await Promise.all(
@@ -378,6 +444,7 @@ export async function start(
         "0x5f93699d11bc00c45d3d90184cc079a5cd6e4bd7"
     );
     await tx.wait();
+
     console.log("buyer registered and staked");
 }
 

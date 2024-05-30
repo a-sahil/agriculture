@@ -55,7 +55,7 @@ const AllLand = () => {
 
   return (
     <div>
-      <div className="mt-28 mx-4 absolute left-[28rem] top-10">
+      <div className="mt-28 mx-3 absolute left-[28rem] top-10">
         <div className="bg-white shadow-md rounded-lg overflow-hidden w-[40rem]">
           <div className="bg-[#fcf7ea] border-b border-gray-200  text-xs font-semibold uppercase tracking-wider text-gray-500">
             <div className="flex p-4">
@@ -72,14 +72,14 @@ const AllLand = () => {
                 key={land.rentalId}
                 className="border-b border-gray-200 text-gray-700"
               >
-                <div className="flex items-center p-4 hover:bg-gray-50">
+                <div className="flex items-center p-[1.5%] hover:bg-gray-50">
                   <div className="w-1/4">{land.rentalId}</div>
                   <div className="w-1/4">{land.area}</div>
                   <div className="w-1/4">{land.rentAmount}</div>
                   <div className="w-1/4">{land.rentDuration}</div>
                   <div className="w-1/4 flex">
                     <button
-                      className="px-4 py-2 rounded-md bg-[#e8f4ec] text-[#219d4d] border-2 border-[#219d4d] hover:bg-[#219d4d] hover:text-white transition ease-in-out duration-500 whitespace-nowrap"
+                      className="px-2 py-[1%] rounded-md bg-[#e8f4ec] text-[#219d4d] border-2 border-[#219d4d] hover:bg-[#219d4d] hover:text-white transition ease-in-out duration-500 whitespace-nowrap"
                       onClick={() => handleBuyLand(land.rentalId, land.rentAmount)}
                       disabled={loadingLand[land.rentalId]}
                     >

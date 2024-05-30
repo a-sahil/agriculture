@@ -24,13 +24,13 @@ const Header = () => {
         <div className="flex bg-[#63ba82] relative left-40 top-36 px-52 p-2 rounded-2xl">
           <div className="w-min pb-6 pl-10 pt-6 relative right-44">
             <h1 className="whitespace-nowrap text-xl font-semibold tracking-wider text-back relative text-[#fefffe]">
-              Welcome Back to Agrosurance
+              Welcome Back to Agrobuddy
             </h1>
             <p className="my-3 text-xs font-medium text-back text-opacity-80 text-[#fefffe]">
               We hope you and your crops are doing absolutely wonderful! Just in
               case anything has gone south, do make a claim for it.
               <br />
-              Make sure you have all your farmlands registered and insured with
+              Make sure you have all your farmlands registered and claim with
               us.
             </p>
             <button className="rounded-md bg-secondary px-4 py-1 font-medium text-back shadow duration-300 hover:-translate-y-1 hover:shadow-lg hover:brightness-110 bg-[#ebab2d] text-white">
@@ -53,12 +53,9 @@ const Header = () => {
         </div>
       </div>
 
-      {/* <div className="h-10 px-10 py-5 relative top-10 text-3xl text-semibold text-green hover:text-green-800">
-        Staker
-      </div> */}
       <div className="flex max-h-full min-h-full flex-1 flex-col items-center justify-between relative top-28 right-44 whitespace-nowrap">
         <button
-          className="flex items-center justify-between rounded-xl bg-primary bg-opacity-20 p-3 px-20 text-2xl text-primary duration-300 hover:bg-opacity-70 hover:text-back bg-[#7afaa5] hover:bg-[#63ba82] relative top-16 "
+          className="flex items-center justify-between rounded-xl bg-primary bg-opacity-20 p-3 px-[25%] text-2xl text-primary duration-300 hover:bg-opacity-70 hover:text-back bg-[#7afaa5] hover:bg-[#63ba82] relative top-16 "
           onClick={() => setShowModal1(true)}
         >
           <img
@@ -66,27 +63,27 @@ const Header = () => {
             alt="land"
             className="w-[55%] relative right-16"
           />
-          <h3 className="font-raleway font-semibold tracking-tight relative left-5 text-[#249c4d]">
+          <h3 className="font-raleway font-semibold tracking-tight relative left-[14%] text-[#249c4d]">
             Add Land
           </h3>
         </button>
         <button
-          className="relative top-16 flex items-center justify-between rounded-xl bg-secondary bg-opacity-20 p-1 px-20 text-2xl text-secondary duration-300 hover:bg-opacity-70 hover:text-back bg-[#f3c259] hover:bg-[#ebab2d]"
+          className="relative top-12 flex items-center justify-between rounded-xl bg-secondary bg-opacity-20 p-1 px-[24%] text-2xl text-secondary duration-300 hover:bg-opacity-70 hover:text-back bg-[#f3c259] hover:bg-[#ebab2d]"
           onClick={() => setShowModal(true)}
         >
-          <img src="/images/ruined-land.png" alt="land" className="w-[72%] relative right-20" />
-          <h3 className="font-raleway font-semibold tracking-tight relative left-1 text-[#ebab2d]">
+          <img src="/images/ruined-land.png" alt="land" className="w-[58%] relative right-16" />
+          <h3 className="font-raleway font-semibold tracking-tight relative left-[12%] text-[#ebab2d]">
             Add Crop
           </h3>
         </button>
 
         <button
-          className="relative top-16 flex items-center justify-between rounded-xl bg-secondary bg-opacity-20 p-1 px-16 text-2xl text-secondary duration-300 hover:bg-opacity-70 hover:text-back  bg-[#7afaa5] hover:bg-[#63ba82]"
+          className="relative top-9 flex items-center justify-between rounded-xl bg-secondary bg-opacity-20 p-1 px-[24%] text-2xl text-secondary duration-300 hover:bg-opacity-70 hover:text-back  bg-[#7afaa5] hover:bg-[#63ba82]"
           onClick={() => setShowModal2(true)}
         >
           <img src="/images/sad-farmer.png" alt="land" className="w-[27%] relative right-12" />
-          <h3 className="font-raleway font-semibold tracking-tight relative left-14 text-[#249c4d]">
-            Add items
+          <h3 className="font-raleway font-semibold tracking-tight relative left-[38%] text-[#249c4d]">
+            Add Item
           </h3>
         </button>
       </div>

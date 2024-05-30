@@ -69,13 +69,13 @@ const Stake = () => {
         <div className="my-6 flex justify-between relative right-72 ">
           <div className="flex items-center gap-x-6 absolute left-[79rem] ">
             <button
-              className="flex items-center gap-x-1 rounded-lg px-12 py-1 tracking-tight text-secondary text-2xl bg-[#fcf7ea] text-[#ebab2d] border-2 border-[#ebab2d] hover:bg-[#ebab2d] hover:text-white whitespace-nowrap transition ease-in-out duration-500 "
+              className="flex items-center gap-x-1 rounded-lg px-6 py-1 tracking-tight text-secondary text-2xl bg-[#fcf7ea] text-[#ebab2d] border-2 border-[#ebab2d] hover:bg-[#ebab2d] hover:text-white whitespace-nowrap transition ease-in-out duration-500 "
               onClick={() => setIsButtonClicked(true)}
             >
               Add Stake
             </button>
             <button
-              className="flex items-center gap-x-1 rounded-lg px-4 py-1 tracking-tight text-primary text-2xl bg-[#e8f4ec] text-[#219d4d] border-2 border-[#219d4d] hover:bg-[#219d4d] hover:text-white transition ease-in-out duration-500 whitespace-nowrap"
+              className="flex items-center gap-x-1 rounded-lg px-2 py-1 tracking-tight text-primary text-2xl bg-[#e8f4ec] text-[#219d4d] border-2 border-[#219d4d] hover:bg-[#219d4d] hover:text-white transition ease-in-out duration-500 whitespace-nowrap"
               disabled={isLoading}
               onClick={handleWithdrawStake}
             >
@@ -84,17 +84,17 @@ const Stake = () => {
           </div>
         </div>
         {isButtonClicked && (
-          <div className=" relative top-6 left-[45rem]  w-0 h-0">
+          <div className=" relative top-6 left-[41rem]  w-0 h-0">
             <div className="flex -space-x-6 border w-0">
               <input
                 type="number"
                 value={amount}
                 onChange={handleStakeChange}
-                className="mb-2 w-40 h-8 rounded-md text-lg relative left-80 border-2 border-[#219d4d] text-[#219d4d]"
+                className="mb-2 w-16 h-8 rounded-md text-lg relative left-80 border-2 border-[#219d4d] text-[#219d4d]"
                 placeholder="Enter amount to stake"
               />
               <button
-                className="flex items-center gap-x-1 w-40 h-8 rounded-lg px-5 relative left-[22rem]  bg-[#fcf7ea] text-[#ebab2d] border-2 border-[#ebab2d] hover:bg-[#ebab2d] hover:text-white whitespace-nowrap transition ease-in-out duration-500"
+                className="flex items-center gap-x-1 w-40 h-8 rounded-lg px-1 relative left-[22rem]  bg-[#fcf7ea] text-[#ebab2d] border-2 border-[#ebab2d] hover:bg-[#ebab2d] hover:text-white whitespace-nowrap transition ease-in-out duration-500"
                 disabled={isLoading}
                 onClick={handleAddStake}
               >
@@ -103,8 +103,13 @@ const Stake = () => {
             </div>
           </div>
         )}
-
-        <h1 className="text-3xl flex justify-center text-center text-[#7dcca1] -ml-20">{`Staked amount is :  ${displayedAmount}`}</h1>
+      
+      <div>
+      <h1 className="text-3xl flex justify-center text-center text-[#7dcca1] -ml-20">{`Staked amount :  ${displayedAmount}`}</h1>
+      <h1 className="text-3xl flex justify-center text-center text-[#7dcca1] -ml-20">{`Usable Stake :  ${stakeAmount[1]}`}</h1>
+      </div>
+        
+        
         <div className="relative top-0 left-0 ml-40 ">{AllCrop()}</div>
       </section>
 

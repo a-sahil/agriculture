@@ -41,8 +41,8 @@ const Claim = () => {
   return (
     <div>
       <ToastContainer />
-      <section>
-        <div className="h-32 flex justify-center items-center text-5xl">
+      <section className="w-full">
+        <div className="h-32 flex justify-center items-center text-5xl w-full ">
           {/* <span className="text-gray-500">H</span>
           <span className="text-[#219d4d]">ead</span>
           <span className="text-[#ebab2d]">ing</span> */}
@@ -55,7 +55,7 @@ const Claim = () => {
         <div className="my-6 flex justify-between relative -top-14 right-32">
           <div className="flex items-center gap-x-6 absolute left-[75rem]">
             <button
-              className="flex items-center gap-x-1 rounded-lg px-6 py-1 font-medium tracking-tight text-secondary text-2xl bg-[#fcf7ea] text-[#ebab2d] border-2 border-[#ebab2d] hover:bg-[#ebab2d] hover:text-white whitespace-nowrap transition ease-in-out duration-500"
+              className="flex items-center gap-x-1 rounded-lg px-2 py-1 font-medium tracking-tight text-secondary text-2xl bg-[#fcf7ea] text-[#ebab2d] border-2 border-[#ebab2d] hover:bg-[#ebab2d] hover:text-white whitespace-nowrap transition ease-in-out duration-500"
               onClick={handleRequest}
               disabled={isLoading1}
             >
@@ -63,7 +63,7 @@ const Claim = () => {
             </button>
 
             <button
-              className="flex items-center gap-x-1 rounded-lg px-12 py-1 font-medium tracking-tight text-2xl bg-[#e8f4ec] text-[#219d4d] border-2 border-[#219d4d] hover:bg-[#219d4d] hover:text-white transition ease-in-out duration-500"
+              className="flex items-center gap-x-1 rounded-lg px-6 py-1 font-medium tracking-tight text-2xl bg-[#e8f4ec] text-[#219d4d] border-2 border-[#219d4d] hover:bg-[#219d4d] hover:text-white transition ease-in-out duration-500"
               onClick={handleError}
               disabled={isLoading}
             >
@@ -72,7 +72,7 @@ const Claim = () => {
           </div>
         </div>
       </section>
-      <section className="p-page my-14 flex justify-between">
+      <section className="p-page my-14 flex justify-between w-full">
         <div className="mx-auto flex w-[40%] h-[26rem] flex-col items-center rounded-[3rem] bg-foreground p-4 relative top-5 right-10 bg-[#e8e9e9]">
           <div className="border-8 border-[#219d4d] w-[23rem] h-96 rounded-full flex items-center justify-center">
             <div className="bg-[#565657] w-[21rem] h-[22rem] rounded-full flex items-center justify-center">

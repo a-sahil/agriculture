@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { addCrop, getAllCrop } from "../utils";
+import { addCrop, getAllCrop , } from "../utils";
 import AllCrop from "../components/allcrop";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -26,8 +26,12 @@ const AddCrop = () => {
       const price = BigInt(details.price);
       const quantity = BigInt(details.quantity);
       setLoading(true);
-      await addCrop(details.cropName, price, quantity);
-      toast.success("Crop Added Successfully");
+      const transactionResponse = await addCrop(details.cropName, price, quantity);
+      console.log(transactionResponse);
+      const transactionHash = transactionResponse.hash;
+      console.log("Transaction Hash:", transactionHash);
+       toast.success(transactionHash);
+       toast.success("Crops Added Successfully");
       console.log("Crop Added Successfully");
       const crops = await getAllCrop();
       console.log("All Crops:", crops);
