@@ -68,15 +68,15 @@ const Stake = () => {
   <span className="text-[#219d4d]">Dashboard</span>
         </h1>
         <div className="my-6 flex justify-between relative right-72 ">
-          <div className="flex items-center gap-x-6 absolute left-[88%] ">
+          <div className="flex items-center gap-x-4 absolute left-[90%] ">
             <button
-              className="flex items-center gap-x-1 rounded-lg px-6 py-1 tracking-tight text-secondary text-2xl bg-[#fcf7ea] text-[#ebab2d] border-2 border-[#ebab2d] hover:bg-[#ebab2d] hover:text-white whitespace-nowrap transition ease-in-out duration-500 "
+              className="flex items-center gap-x-1 rounded-lg px-6 py-1 tracking-tight text-secondary text-xl bg-[#fcf7ea] text-[#ebab2d] border-2 border-[#ebab2d] hover:bg-[#ebab2d] hover:text-white whitespace-nowrap transition ease-in-out duration-500 "
               onClick={() => setIsButtonClicked(true)}
             >
               Add Stake
             </button>
             <button
-              className="flex items-center gap-x-1 rounded-lg px-2 py-1 tracking-tight text-primary text-2xl bg-[#e8f4ec] text-[#219d4d] border-2 border-[#219d4d] hover:bg-[#219d4d] hover:text-white transition ease-in-out duration-500 whitespace-nowrap"
+              className="flex items-center gap-x-1 rounded-lg px-2 py-1 tracking-tight text-primary text-xl bg-[#e8f4ec] text-[#219d4d] border-2 border-[#219d4d] hover:bg-[#219d4d] hover:text-white transition ease-in-out duration-500 whitespace-nowrap"
               disabled={isLoading}
               onClick={handleWithdrawStake}
             >
