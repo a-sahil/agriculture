@@ -4,6 +4,7 @@ import { WagmiProvider } from "wagmi";
 import { mainnet, polygon, opBNBTestnet, bscTestnet } from "wagmi/chains";
 import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
 import * as React from "react";
+import {useState , useEffect} from 'react';
 
 const config = getDefaultConfig({
     appName: "My RainbowKit App",
@@ -18,10 +19,12 @@ export function Providers({ children }) {
     const [mounted, setMounted] = useState(false);
     useEffect(() => setMounted(true), []);
     return (
+
         <WagmiConfig config={config}>
             <QueryClientProvider client={queryClient}>
                 <RainbowKitProvider>{mounted && children}</RainbowKitProvider>
             </QueryClientProvider>
         </WagmiConfig>
+      
     );
 }

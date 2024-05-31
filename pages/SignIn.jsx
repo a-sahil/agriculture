@@ -1,6 +1,6 @@
 'use client'
 import React, { useState } from "react";
-import country from "./countries";
+import country from "../components/countries";
 import Footer from "../components/footer";
 import { getUserAddress, register, getAllFarmers } from "../utils";
 import { ToastContainer, toast } from "react-toastify";
