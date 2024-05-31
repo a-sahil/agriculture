@@ -55,7 +55,7 @@ const Header = () => {
 
       <div className="flex max-h-full min-h-full flex-1 flex-col items-center justify-between relative top-28 right-44 whitespace-nowrap">
         <button
-          className="flex items-center justify-between rounded-xl bg-primary bg-opacity-20 p-2 px-[40%] text-2xl text-primary duration-300 hover:bg-opacity-70 hover:text-back bg-[#7afaa5] hover:bg-[#63ba82] relative top-16 "
+          className="flex items-center justify-between rounded-xl bg-primary bg-opacity-20 p-3 px-[40%] text-2xl text-primary duration-300 hover:bg-opacity-70 hover:text-back bg-[#7afaa5] hover:bg-[#63ba82] relative top-16 "
           onClick={() => setShowModal1(true)}
         >
           <img
@@ -68,21 +68,21 @@ const Header = () => {
           </h3>
         </button>
         <button
-          className="relative top-12 flex items-center justify-between rounded-xl bg-secondary bg-opacity-20 p-1 px-[40%] text-2xl text-secondary duration-300 hover:bg-opacity-70 hover:text-back bg-[#f3c259] hover:bg-[#ebab2d]"
+          className="relative top-10 flex items-center justify-between rounded-xl bg-secondary bg-opacity-20 p-3 px-[40%] text-2xl text-secondary duration-300 hover:bg-opacity-70 hover:text-back bg-[#f3c259] hover:bg-[#ebab2d]"
           onClick={() => setShowModal(true)}
         >
           <img src="/images/ruined-land.png" alt="land" className="w-[58%] relative right-16" />
-          <h3 className="font-raleway font-semibold tracking-tight relative left-[12%] text-[#ebab2d]">
+          <h3 className="font-raleway font-semibold tracking-tight relative left-[10%] text-[#ebab2d]">
             Add Crop
           </h3>
         </button>
 
         <button
-          className="relative top-9 flex items-center justify-between rounded-xl bg-secondary bg-opacity-20 p-1 px-[40%] text-2xl text-secondary duration-300 hover:bg-opacity-70 hover:text-back  bg-[#7afaa5] hover:bg-[#63ba82]"
+          className="relative top-5 flex items-center justify-between rounded-xl bg-secondary bg-opacity-20 p-3 px-[40%] text-2xl text-secondary duration-300 hover:bg-opacity-70 hover:text-back  bg-[#7afaa5] hover:bg-[#63ba82]"
           onClick={() => setShowModal2(true)}
         >
           <img src="/images/sad-farmer.png" alt="land" className="w-[27%] relative right-12" />
-          <h3 className="font-raleway font-semibold tracking-tight relative left-[38%] text-[#249c4d]">
+          <h3 className="font-raleway font-semibold tracking-tight relative left-[39%] text-[#249c4d]">
             Add Item
           </h3>
         </button>

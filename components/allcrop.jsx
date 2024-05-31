@@ -49,7 +49,7 @@ const AllCrop = () => {
   return (
     <div>
       <div className="mt-28 mx-4 absolute left-[44rem]">
-        <div className="bg-white shadow-md rounded-lg overflow-hidden w-[36rem]">
+        <div className="bg-white shadow-md rounded-lg overflow-hidden w-[170%]">
           <div className="bg-[#fcf7ea] border-b border-gray-200 text-left text-xs font-semibold uppercase tracking-wider text-gray-500">
             <div className="flex p-4">
               <div className="w-1/4">CropId</div>

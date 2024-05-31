@@ -68,7 +68,7 @@ const Stake = () => {
   <span className="text-[#219d4d]">Dashboard</span>
         </h1>
         <div className="my-6 flex justify-between relative right-72 ">
-          <div className="flex items-center gap-x-6 absolute left-[93%] ">
+          <div className="flex items-center gap-x-6 absolute left-[88%] ">
             <button
               className="flex items-center gap-x-1 rounded-lg px-6 py-1 tracking-tight text-secondary text-2xl bg-[#fcf7ea] text-[#ebab2d] border-2 border-[#ebab2d] hover:bg-[#ebab2d] hover:text-white whitespace-nowrap transition ease-in-out duration-500 "
               onClick={() => setIsButtonClicked(true)}
