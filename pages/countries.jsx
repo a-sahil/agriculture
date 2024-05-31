@@ -1,4 +1,5 @@
-export default [
+let country;
+export default  country =  [
   'Albania',
   'Andorra',
   'Armenia',

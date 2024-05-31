@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import countries from "./countries";
+import country from "./countries";
 import Footer from "../components/footer";
 import { getUserAddress, register, getAllFarmers } from "../utils";
 import { ToastContainer, toast } from "react-toastify";
@@ -97,7 +97,7 @@ const SignIn = () => {
               required
             >
               <option key="" value=""></option>
-              {countries.map((country) => (
+              {country.map((country) => (
                 <option key={country} value={country}>
                   {country}
                 </option>
