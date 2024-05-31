@@ -106,10 +106,10 @@ const AllBorrowReq = () => {
                   </div>
                   <div className="w-1/4 flex">
                   <button
-                      className={`px-2 py-[1%] rounded-md text-white ${
+                      className={`px-2 py-[1%] rounded-md text-[#219d4d] ${
                         loadingPrice[borrow.requestId]
-                            ? "bg-gray-400 cursor-not-allowed"
-                            : "bg-[#e8f4ec]  text-black border-2 border-[#219d4d] hover:bg-[#219d4d] hover:text-white transition ease-in-out duration-500 whitespace-nowrap"
+                            ? "bg-gray-100  cursor-not-allowed"
+                            : "bg-[#e8f4ec]  text-[#219d4d] border-2 border-[#219d4d] hover:bg-[#219d4d] hover:text-white transition ease-in-out duration-500 whitespace-nowrap"
                         }`}
                       onClick={() => handleSetPrice(borrow.requestId)}
                       disabled={loadingPrice[borrow.requestId]}
