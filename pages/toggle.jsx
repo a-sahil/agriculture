@@ -1,3 +1,4 @@
+'use client'
 import React, { useState } from 'react';
 import AllLand from "../components/allland";
 import AllBorrowReq from "../components/allborrowreq";

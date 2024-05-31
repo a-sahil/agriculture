@@ -1,3 +1,4 @@
+'use client'
 import React, { useState } from "react";
 import country from "./countries";
 import Footer from "../components/footer";

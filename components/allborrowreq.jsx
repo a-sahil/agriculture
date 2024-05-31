@@ -1,4 +1,6 @@
-import React, { useState, useEffect } from "react";
+'use client'
+import 
+React, { useState, useEffect } from "react";
 import { getUserAddress, setPrice, getAllRequest } from "../utils";
 import Toggle from "../pages/toggle";
 const AllBorrowReq = () => {

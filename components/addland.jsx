@@ -1,3 +1,4 @@
+'use client'
 import React, { useState } from 'react';
 import { start} from "../utils";
 import AllCrop from "./allcrop";

@@ -1,3 +1,4 @@
+'use client'
 import React, { useState, useEffect } from "react";
 import { getUserAddress, getAllCrop, sell } from "../utils";
 import { ToastContainer, toast } from "react-toastify";
