@@ -109,7 +109,7 @@ const AllBorrowReq = () => {
                       className={`px-2 py-[1%] rounded-md text-white ${
                         loadingPrice[borrow.requestId]
                             ? "bg-gray-400 cursor-not-allowed"
-                            : "bg-[#e8f4ec] text-[#30814c] border-2 border-[#219d4d] hover:bg-[#219d4d] hover:text-white transition ease-in-out duration-500 whitespace-nowrap"
+                            : "bg-[#e8f4ec]  text-[#219d4d]  border-2 border-[#219d4d] hover:bg-[#219d4d] hover:text-white transition ease-in-out duration-500 whitespace-nowrap"
                         }`}
                       onClick={() => handleSetPrice(borrow.requestId)}
                       disabled={loadingPrice[borrow.requestId]}
