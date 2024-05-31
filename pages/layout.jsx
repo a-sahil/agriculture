@@ -1,6 +1,6 @@
 "use client";
 import "@rainbow-me/rainbowkit/styles.css";
-import { Providers } from "./providers";
+import  Providers  from "./providers";
 import { Inter } from "next/font/google";
 // import NavBar from "@/components/NavBar";
 // import SideBar from "@/components/SideBar";
