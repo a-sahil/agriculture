@@ -211,7 +211,7 @@ export async function callClaim(){
 }
 
 export async function getAllFarmers(){
-    const contract = await getProviderFromInfura( );
+    const contract = await getRegistryContract( );
     const data = await contract.getAllFarmers();
 
     const items = await Promise.all(
@@ -237,7 +237,7 @@ export async function getAllFarmers(){
 }
 
 export async function fetchTotalFarmer() {
-    const contract = await getProviderFromInfura();
+    const contract = await getRegistryContract();
     const address = await getUserAddress();
     const data = await contract.farmerId();
     console.log("dao id", data);
@@ -252,7 +252,7 @@ export async function buyerStake(amount){
 }
 
 export async function getStakeAmount() {
-    const contract = await getProviderFromInfura();
+    const contract = await getRegistryContract();
     const address = await getUserAddress();
     const data = await contract.getStake(address);
     console.log("dao id", data);
@@ -260,7 +260,7 @@ export async function getStakeAmount() {
 }
 
 export async function getArea() {
-    const contract = await getProviderFromInfura();
+    const contract = await getRegistryContract();
     const address = await getUserAddress();
     const data = await contract.getArea(address);
     console.log("dao id", data);
@@ -277,7 +277,7 @@ export async function addCrop(cropName, price, quantity){
 }
 
 export async function getAllCrop(){
-    const contract = await getProviderFromInfura();
+    const contract = await getRegistryContract();
     const data = await contract.getAllCrop();
 
     const items = await Promise.all(
@@ -329,7 +329,7 @@ export async function withdrawStake(){
 }
 
 export async function fetchTotalCrop() {
-    const contract = await getProviderFromInfura();
+    const contract = await getRegistryContract();
     const address = await getUserAddress();
     const data = await contract.cropId();
     console.log("dao id", data);
@@ -337,7 +337,7 @@ export async function fetchTotalCrop() {
 }
 
 export async function cropToMsp(cropName) {
-    const contract = await getProviderFromInfura();
+    const contract = await getRegistryContract();
     const address = await getUserAddress();
     const data = await contract.cropToMSP(cropName);
     console.log("dao id", data);
@@ -371,7 +371,7 @@ export async function setPrice(_requestId, _price){
 
 
 export async function getAllRequest(){
-    const contract = await getProviderForComodities();
+    const contract = await getComoditiesContract();
     const data = await contract.getAllRequest();
 
     const items = await Promise.all(
@@ -395,7 +395,7 @@ export async function getAllRequest(){
 }
 
 export async function fetchTotalRequests() {
-    const contract = await getProviderForComodities();
+    const contract = await getComoditiesContract();
     const address = await getUserAddress();
     const data = await contract.requestId();
     console.log("dao id", data);
@@ -405,7 +405,7 @@ export async function fetchTotalRequests() {
 //------------------------------------------------------------------
 
 export async function getAllRentals(){
-    const contract = await getProviderForSender();
+    const contract = await getSenderContract();
     const data = await contract.getAllRentals();
 
     const items = await Promise.all(
@@ -482,7 +482,7 @@ export async function gameSessions(id){
 }
 
 export async function farmerDetails(){
-    const contract = await getProviderFromInfura();
+    const contract = await getRegistryContract();
     const address = await getUserAddress();
     const value = await contract.addressToId(address);
     const data = await contract.IdToFarmer(value);
