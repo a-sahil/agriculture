@@ -36,7 +36,7 @@ const Footer = () => {
       <div className="flex flex-col text-white">
         <h5 className="font-semibold">Resources</h5>
         <div className="my-7 flex flex-col gap-y-3">
-          <Link href="/methodology">How it works</Link>
+          <Link href="https://tome.app/my-8615/agrobuddy-empowering-farmers-with-blockchain-technology-clwtnd42g029vmr643bzp2c7t/">How it works</Link>
           <Link href="https://chain.link/">BNB</Link>
           <Link href="/calculation">Calculations</Link>
           <Link href="/help">Help</Link>

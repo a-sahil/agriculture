@@ -460,7 +460,7 @@ export async function acceptRental(
         _amount, 
         "0xcab0EF91Bee323d1A617c0a027eE753aFd6997E4", 
         "13264668187771770619", 
-        "0x2DdE505706c4711c465c79B5568CC2C50454Ece9"
+        "0x96E8089b38A47aaB9788be075155b4ba1Cc7Fc2d"
     );
     await tx.wait();
     console.log("buyer registered and staked");

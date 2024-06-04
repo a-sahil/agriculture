@@ -6,7 +6,7 @@ export const MyToken = `0x91E714f998B1AAe75b133E0467b5FAA2783f5D0A`;
 export const comoditiesContract = `0xC3a7ef1A48C7E42664dc6beE93b18Abd973159B5`;
 export const BnbCurrency = `BNB`;
 export const BnbRPCaUrl = ``;
-export const Sender = `0x2DdE505706c4711c465c79B5568CC2C50454Ece9`;
+export const Sender = `0x96E8089b38A47aaB9788be075155b4ba1Cc7Fc2d`;
 export const reciever = `0x5f93699d11bc00c45d3d90184cc079a5cd6e4bd7`;
 
 export let addressRegistry = BnbRegistry;
