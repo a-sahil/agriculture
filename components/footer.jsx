@@ -62,7 +62,7 @@ const Footer = () => {
       <p className="font-raleway text-xl font-bold">Follow Us</p>
       <div className="flex items-center gap-x-3 brightness-0 invert">
         <Link
-          href="https://linkedin.com/in/marsian83"
+          href="https://www.linkedin.com/in/rishabh-tibrewal-2a4849195/"
           target="_blank"
           className=""
         >
@@ -72,18 +72,8 @@ const Footer = () => {
             className="aspect-square w-[2.5ch]"
           />
         </Link>
-        <Link
-          href="https://instagram.com/marsian83"
-          target="_blank"
-          className=""
-        >
-          <img
-            src="https://cdn1.iconfinder.com/data/icons/social-media-2481/32/ic-social-media-instagram-128.png"
-            alt="instagram"
-            className="aspect-square w-[3ch]"
-          />
-        </Link>
-        <Link href="https://www.github.com/Agrosurance" className="">
+        
+        <Link href="https://github.com/a-sahil/agriculture" className="">
           <img
             src="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-social-github-outline-128.png"
             alt="github"

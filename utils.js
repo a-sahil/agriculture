@@ -446,6 +446,7 @@ export async function start(
     await tx.wait();
 
     console.log("buyer registered and staked");
+    return tx;
 }
 
 

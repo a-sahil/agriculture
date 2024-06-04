@@ -30,7 +30,7 @@ const Claim = () => {
         setLoading2(false);
         setFarmersData(data);
         if (data.length > 0) {
-          const { farmerAddress, area, state, country } = data[0]; 
+          const { farmerAddress, area, state, country } = data[1]; 
           setFarmerAddress(farmerAddress);
           setArea(area);
           setState(state);
